@@ -1,0 +1,42 @@
+# Configuration File
+# This file is used to allow user customization when cloning and using the repo.
+# Modify these settings to match your project requirements without changing the code.
+# Unlike .env (which should contain secrets), this file can be committed to git.
+
+# Project Settings
+project_name: "Your Project Name"
+version: "0.1.0"
+description: "Project description goes here"
+
+# Data Processing Settings
+data:
+  raw_data_path: "data/raw_data"
+  processed_data_path: "data/processed_data"
+  output_data_path: "data/output_data"
+  file_format: "csv"  # Options: csv, parquet, json, xlsx
+
+# Analysis Settings
+analysis:
+  random_seed: 42
+  test_size: 0.2
+  validation_split: 0.2
+
+# Model Settings (if using ML)
+model:
+  model_type: "regression"  # Options: regression, classification, clustering
+  hyperparameters:
+    learning_rate: 0.01
+    max_depth: 10
+
+# Output Settings
+output:
+  save_plots: true
+  plot_format: "png"  # Options: png, pdf, svg
+  save_results: true
+  results_format: "csv"
+
+# Logging Settings
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  log_to_file: false
+  log_file_path: "logs/app.log"
