@@ -30,7 +30,7 @@ export default function ReadabilityGauge({ readability, targetRange = { min: 50,
 
   return (
     <div className="readability-section">
-      <h4>Readability</h4>
+      <h4>Calculated Readability</h4>
       <div className="gauge-track">
         <div
           className={`gauge-fill ${colour}`}

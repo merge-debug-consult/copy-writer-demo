@@ -22,7 +22,7 @@ export default function CompactReadability({ readability, targetRange = { min: 5
 
   return (
     <div className="compact-readability">
-      <span className="compact-readability-label">Readability</span>
+      <span className="compact-readability-label">Calculated Readability</span>
       <span className="compact-readability-score" style={{ color: colour }}>
         {fre.toFixed(0)}
       </span>
