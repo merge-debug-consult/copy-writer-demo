@@ -14,7 +14,6 @@ export default function App() {
 
   function handleStyleChange(newStyle) {
     setStyle(newStyle)
-    // Check if new style matches any brand preset
     const match = BRAND_PRESETS.find(
       (bp) =>
         bp.style.tone === newStyle.tone &&
@@ -28,6 +27,8 @@ export default function App() {
   function handlePresetSelect(presetKey) {
     setActiveVoiceBrand(presetKey)
   }
+
+  const showSidebar = activePage === 'image'
 
   return (
     <>
@@ -50,19 +51,21 @@ export default function App() {
         </nav>
       </header>
 
-      <div className="app-layout">
-        <aside className="voice-guide-sidebar">
-          <VoiceSelector
-            style={style}
-            onStyleChange={handleStyleChange}
-            onPresetSelect={handlePresetSelect}
-          />
-          <VoiceGuide style={style} activePreset={activeVoiceBrand} />
-        </aside>
+      <div className={`app-layout ${showSidebar ? '' : 'no-sidebar'}`}>
+        {showSidebar && (
+          <aside className="voice-guide-sidebar">
+            <VoiceSelector
+              style={style}
+              onStyleChange={handleStyleChange}
+              onPresetSelect={handlePresetSelect}
+            />
+            <VoiceGuide style={style} activePreset={activeVoiceBrand} />
+          </aside>
+        )}
 
         <main className="main-content">
           {activePage === 'copy' ? (
-            <CopyTransformer style={style} activeVoiceBrand={activeVoiceBrand} />
+            <CopyTransformer />
           ) : (
             <ImageStudio style={style} />
           )}

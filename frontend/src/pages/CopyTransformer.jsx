@@ -1,46 +1,44 @@
 import { useState } from 'react'
 import PresetSelector from '../components/PresetSelector.jsx'
-import TextPanel from '../components/TextPanel.jsx'
-import ChannelTabs from '../components/ChannelTabs.jsx'
+import ToneModifiers from '../components/ToneModifiers.jsx'
 import ReadabilityGauge from '../components/ReadabilityGauge.jsx'
 import QualitativeScores from '../components/QualitativeScores.jsx'
-import IterationHistory from '../components/IterationHistory.jsx'
+import VoiceOutputCard from '../components/VoiceOutputCard.jsx'
 import ErrorModal from '../components/ErrorModal.jsx'
 import { PRESETS } from '../data/presets.js'
-import { getTargetRange } from '../data/voiceProfiles.js'
+import { BRAND_PRESETS } from '../data/voiceProfiles.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000'
 
-const LOADING_STAGES = [
-  'Analysing input...',
-  'Generating styled copy...',
-  'Refining readability...',
-  'Creating channel variants...',
-  'Scoring output...',
-]
+const VOICE_KEYS = BRAND_PRESETS.map((bp) => ({
+  key: bp.key,
+  label: bp.label,
+  colour: bp.colour,
+  style: bp.style,
+  targetRange: bp.targetRange,
+}))
 
-export default function CopyTransformer({ style, activeVoiceBrand }) {
+const DEFAULT_MODIFIERS = { season: '', affluence: '', traveller: '' }
+
+export default function CopyTransformer() {
   const [activePreset, setActivePreset] = useState(null)
   const [customText, setCustomText] = useState('')
   const [inputText, setInputText] = useState('')
-  const [response, setResponse] = useState(null)
+  const [inputReadability, setInputReadability] = useState(null)
+  const [inputQualitative, setInputQualitative] = useState(null)
+  const [responses, setResponses] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [loadingStage, setLoadingStage] = useState(0)
   const [showErrorModal, setShowErrorModal] = useState(false)
-  const [activeChannel, setActiveChannel] = useState('website')
-
-  const targetRange = getTargetRange(style)
+  const [modifiers, setModifiers] = useState(DEFAULT_MODIFIERS)
 
   function handlePresetClick(preset) {
     setActivePreset(preset.id)
     setInputText(preset.input_text)
-    // Use voice-specific preset response if available, fall back to scott_dunn
-    const voiceKey = activeVoiceBrand || 'scott_dunn'
-    const presetResponse = preset.responses?.[voiceKey] || preset.responses?.scott_dunn || preset.response
-    setResponse(presetResponse)
-    setError(null)
     setCustomText('')
-    setActiveChannel('website')
+    setResponses(preset.responses)
+    const first = Object.values(preset.responses)[0]
+    setInputReadability(first.input_readability)
+    setInputQualitative(first.input_qualitative)
   }
 
   async function handleTransform() {
@@ -49,31 +47,45 @@ export default function CopyTransformer({ style, activeVoiceBrand }) {
 
     setActivePreset(null)
     setInputText(text)
-    setResponse(null)
+    setResponses(null)
+    setInputReadability(null)
+    setInputQualitative(null)
     setLoading(true)
-    setLoadingStage(0)
-    setActiveChannel('website')
-
-    const interval = setInterval(() => {
-      setLoadingStage((s) => Math.min(s + 1, LOADING_STAGES.length - 1))
-    }, 3000)
 
     try {
-      const res = await fetch(`${API_BASE}/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ input_text: text, style }),
-      })
-      if (!res.ok) throw new Error(`API error: ${res.status}`)
-      const data = await res.json()
-      setResponse(data)
+      const results = await Promise.all(
+        VOICE_KEYS.map(async (voice) => {
+          const res = await fetch(`${API_BASE}/generate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              input_text: text,
+              style: voice.style,
+              modifiers,
+            }),
+          })
+          if (!res.ok) throw new Error(`API error: ${res.status}`)
+          return { key: voice.key, data: await res.json() }
+        })
+      )
+
+      const allResponses = {}
+      for (const { key, data } of results) {
+        allResponses[key] = data
+      }
+      setResponses(allResponses)
+
+      const first = results[0].data
+      setInputReadability(first.input_readability)
+      setInputQualitative(first.input_qualitative)
     } catch {
       setShowErrorModal(true)
     } finally {
-      clearInterval(interval)
       setLoading(false)
     }
   }
+
+  const hasModifiers = modifiers.season || modifiers.affluence || modifiers.traveller
 
   return (
     <>
@@ -89,20 +101,23 @@ export default function CopyTransformer({ style, activeVoiceBrand }) {
           value={customText}
           onChange={(e) => setCustomText(e.target.value)}
         />
-        <button
-          className="transform-btn"
-          onClick={handleTransform}
-          disabled={loading || !customText.trim()}
-        >
-          {loading ? 'Transforming...' : 'Transform'}
-        </button>
+        <div className="custom-input-controls">
+          <ToneModifiers modifiers={modifiers} onChange={setModifiers} />
+          <button
+            className="transform-btn"
+            onClick={handleTransform}
+            disabled={loading || !customText.trim()}
+          >
+            {loading ? 'Generating all 4 voices...' : 'Transform'}
+          </button>
+        </div>
       </div>
 
       {showErrorModal && <ErrorModal onClose={() => setShowErrorModal(false)} />}
 
-      {!response && !loading && (
+      {!responses && !loading && (
         <div className="empty-state">
-          <p>Select a preset above or paste your own text to see the transformation</p>
+          <p>Select a preset above or paste your own text to see all four voices side by side</p>
         </div>
       )}
 
@@ -110,46 +125,41 @@ export default function CopyTransformer({ style, activeVoiceBrand }) {
         <div className="card">
           <div className="loading-overlay">
             <div className="loading-spinner" />
-            <p className="loading-stage">{LOADING_STAGES[loadingStage]}</p>
+            <p className="loading-stage">Generating all 4 voice variants in parallel...</p>
           </div>
         </div>
       )}
 
-      {response && (
+      {responses && (
         <>
-          <div className="comparison">
-            <TextPanel
-              type="input"
-              title="Supplier Original"
-              text={inputText}
-              readability={response.input_readability}
-              qualitative={response.input_qualitative}
-              targetRange={targetRange}
-            />
-            <div className="panel">
-              <div className="panel-header output">Transformed Output</div>
-              <div className="panel-body">
-                {response.channels ? (
-                  <ChannelTabs
-                    channels={response.channels}
-                    activeChannel={activeChannel}
-                    onChannelChange={setActiveChannel}
-                  />
-                ) : (
-                  <p className="panel-text">{response.output_text}</p>
-                )}
-                <ReadabilityGauge
-                  readability={response.output_readability}
-                  targetRange={targetRange}
-                />
-                <QualitativeScores qualitative={response.output_qualitative} />
-              </div>
+          <div className="panel input-panel-full">
+            <div className="panel-header input">Supplier Original</div>
+            <div className="panel-body">
+              <p className="panel-text">{inputText}</p>
+              {inputReadability && (
+                <ReadabilityGauge readability={inputReadability} targetRange={{ min: 50, max: 65 }} />
+              )}
+              {inputQualitative && (
+                <QualitativeScores qualitative={inputQualitative} />
+              )}
             </div>
           </div>
 
-          {response.iterations && response.iterations.length > 1 && (
-            <IterationHistory iterations={response.iterations} targetRange={targetRange} />
-          )}
+          <div className="voice-grid">
+            {VOICE_KEYS.map((voice) => {
+              const voiceResponse = responses[voice.key]
+              if (!voiceResponse) return null
+              return (
+                <VoiceOutputCard
+                  key={voice.key}
+                  label={voice.label}
+                  colour={voice.colour}
+                  response={voiceResponse}
+                  targetRange={voice.targetRange}
+                />
+              )
+            })}
+          </div>
         </>
       )}
     </>

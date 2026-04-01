@@ -261,6 +261,36 @@ body {
   margin-top: 0.15rem;
 }
 
+/* Tone modifiers */
+.tone-modifiers {
+  flex: 1;
+}
+
+.tone-modifiers-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sd-text-light);
+  margin-bottom: 0.15rem;
+}
+
+.tone-modifiers-hint {
+  font-size: 0.65rem;
+  color: var(--sd-text-light);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.modifier-dropdowns {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.modifier-dropdowns .style-dropdown-group {
+  flex: 1;
+}
+
 /* Custom input */
 .custom-input-area {
   margin-bottom: 1.5rem;
@@ -284,8 +314,14 @@ body {
   border-color: var(--sd-green);
 }
 
-.transform-btn {
+.custom-input-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
   margin-top: 0.75rem;
+}
+
+.transform-btn {
   background: var(--sd-green);
   color: var(--sd-white);
   border: none;
@@ -307,7 +343,57 @@ body {
   cursor: not-allowed;
 }
 
-/* Comparison panels */
+/* No sidebar layout */
+.app-layout.no-sidebar {
+  max-width: 1600px;
+}
+
+/* Input panel full width */
+.input-panel-full {
+  margin-bottom: 1.5rem;
+}
+
+/* 2x2 voice output grid */
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.voice-card {
+  background: var(--sd-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.voice-card-header {
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sd-text);
+  background: var(--sd-grey);
+  border-left: 4px solid;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.voice-card-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.voice-card-body {
+  padding: 1rem;
+}
+
+/* Comparison panels (kept for image page) */
 .comparison {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -996,6 +1082,10 @@ body {
 
   .voice-guide-sidebar {
     width: 100%;
+  }
+
+  .voice-grid {
+    grid-template-columns: 1fr;
   }
 
   .comparison {

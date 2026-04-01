@@ -8,6 +8,7 @@ from .models import (
     ImageAnalyseResponse,
     Iteration,
     StyleDimensions,
+    ToneModifiers,
 )
 from .probe_llm import (
     describe_image,
@@ -20,14 +21,20 @@ from .probe_llm import (
 )
 from .prompt_registry import build_transform_system
 from .scoring import compute_readability
-from .voices import get_target_range
+from .voices import build_modifier_text, get_target_range
 
 MAX_ITERATIONS = 3
 
 
-async def generate(input_text: str, style: StyleDimensions) -> GenerateResponse:
+async def generate(
+    input_text: str, style: StyleDimensions, modifiers: ToneModifiers | None = None,
+) -> GenerateResponse:
+    modifier_text = ""
+    if modifiers:
+        modifier_text = build_modifier_text(modifiers.season, modifiers.affluence, modifiers.traveller)
     system_prompt = build_transform_system(
-        style.tone, style.audience, style.formality, style.detail_style
+        style.tone, style.audience, style.formality, style.detail_style,
+        modifier_text=modifier_text,
     )
     target_min, target_max = get_target_range(
         style.tone, style.audience, style.formality, style.detail_style

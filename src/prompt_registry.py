@@ -4,10 +4,11 @@ from .voices import compose_system_prompt
 
 
 def build_transform_system(
-    tone: str, audience: str, formality: str, detail_style: str
+    tone: str, audience: str, formality: str, detail_style: str,
+    modifier_text: str = "",
 ) -> str:
     """Build a voice-specific transform system prompt from style dimensions."""
-    return compose_system_prompt(tone, audience, formality, detail_style)
+    return compose_system_prompt(tone, audience, formality, detail_style, modifier_text=modifier_text)
 
 
 def build_refine_prompt(
@@ -84,24 +85,29 @@ Website copy:
 
 
 IMAGE_DESCRIBE_SYSTEM = """\
-Describe this image in detail for a luxury travel copywriter. Focus on:
-- The physical setting and architecture
-- Lighting, time of day, atmosphere
-- Key features visible (pool, view, furnishings, landscape)
-- The mood and emotional tone of the image
-- What type of traveller this would appeal to
+Describe this image in detail for a luxury travel copywriter. This could be anything \
+travel or holiday related - a hotel, villa, beach, mountain, chalet, surf shack, \
+landscape, activity, dining scene, or destination shot.
 
-Be factual and specific. Do not invent features you cannot see."""
+Focus on:
+- The setting: location type, landscape, architecture (if any)
+- Lighting, time of day, weather, atmosphere
+- Key features visible (natural scenery, water, furnishings, activities, food)
+- The mood and emotional tone of the image
+- What type of traveller or holiday this would appeal to
+
+Be factual and specific. Do not invent features you cannot see. \
+If the image is not travel or holiday related, say so briefly."""
 
 
 IMAGE_ALIGNMENT_SYSTEM = """\
-You are assessing how well a property image matches its marketing copy.
+You are assessing how well a travel or holiday image matches its marketing copy.
 
 Score each dimension 1-5 with a single-sentence rationale:
 
 1. Visual match - does the image show what the text describes?
 2. Mood alignment - does the image's atmosphere match the text's tone?
-3. Hero feature - does the image highlight the property's key selling point from the text?
+3. Hero feature - does the image highlight the key selling point from the text?
 4. Audience fit - would this image appeal to the target reader of this text?
 5. Scroll-stopping - is this image compelling enough to make someone pause and read?
 
@@ -121,10 +127,11 @@ IMAGE_ALIGNMENT_USER_TEMPLATE = """\
 IMAGE DESCRIPTION:
 {image_description}
 
-PROPERTY COPY:
+MARKETING COPY:
 {text}"""
 
 IMAGE_TO_COPY_USER_TEMPLATE = """\
-Based on this image description, write property marketing copy (150-200 words):
+Based on this image description, write travel marketing copy (150-200 words). \
+This could be for a hotel, destination, experience, or any holiday setting:
 
 {image_description}"""

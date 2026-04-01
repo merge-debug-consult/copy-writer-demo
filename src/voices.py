@@ -182,11 +182,97 @@ BRAND_PRESETS: dict[str, dict] = {
     },
 }
 
+SEASON_FRAGMENTS: dict[str, str] = {
+    "winter": (
+        "Frame with a winter atmosphere: crisp air, snow, fireside warmth, hot drinks, "
+        "cosy interiors, early sunsets, and that particular stillness only cold brings."
+    ),
+    "summer": (
+        "Frame with a summer atmosphere: long golden days, warm evenings, outdoor dining, "
+        "sun on skin, barefoot mornings, the unhurried pace of endless daylight."
+    ),
+    "spring": (
+        "Frame with a spring atmosphere: fresh starts, blossom, clear light, green shoots, "
+        "the sense of a world waking up. Lighter than winter, gentler than summer."
+    ),
+    "autumn": (
+        "Frame with an autumn atmosphere: golden light, turning leaves, harvest tables, "
+        "wood smoke, misty mornings, and the quiet contentment of slowing down."
+    ),
+}
+
+AFFLUENCE_FRAGMENTS: dict[str, str] = {
+    "budget_friendly": (
+        "Position as smart-value travel. Emphasise great experiences without the premium "
+        "price tag. Words like 'accessible', 'great value', 'clever choice'. "
+        "Avoid anything that sounds cheap - this is savvy, not budget."
+    ),
+    "mid_range": (
+        "Position as quality without excess. Comfortable luxury, well-chosen rather than "
+        "extravagant. Emphasise good taste over big spending. The reader wants to treat "
+        "themselves without feeling wasteful."
+    ),
+    "premium": (
+        "Position as premium luxury. Emphasise quality, exclusivity, and attention to detail. "
+        "The reader expects the best and is willing to pay for it. Everything should feel "
+        "considered, curated, and worth every penny."
+    ),
+    "lavish": (
+        "Position as ultra-lavish, no-expense-spared luxury. Private jets, butler service, "
+        "the presidential suite, money-is-no-object experiences. Emphasise the extraordinary, "
+        "the one-of-a-kind, the 'you can't buy this anywhere else'."
+    ),
+}
+
+TRAVELLER_FRAGMENTS: dict[str, str] = {
+    "couple": (
+        "Writing for a couple travelling together. Emphasise shared moments, togetherness, "
+        "things to discover as a pair, and the intimacy of exploring somewhere new together."
+    ),
+    "honeymoon": (
+        "Writing for honeymooners. Frame as the first chapter of a new story - celebration, "
+        "romance, once-in-a-lifetime indulgence, and creating memories they'll talk about forever."
+    ),
+    "family_young": (
+        "Writing for families with young children (under 8). Address parents directly. "
+        "Emphasise safety, convenience, kids' facilities, easy logistics, and guilt-free "
+        "parent time. The kids being happy is what makes it a holiday."
+    ),
+    "family_teens": (
+        "Writing for families with teenagers. Emphasise activities that genuinely engage "
+        "teens (not childish, not boring), shared experiences the whole family can bond over, "
+        "and enough independence that nobody feels dragged along."
+    ),
+    "friends_group": (
+        "Writing for a group of friends travelling together. Emphasise shared fun, social "
+        "spaces, group activities, late nights, laughter, and the kind of trip that becomes "
+        "the story everyone tells for years."
+    ),
+    "solo": (
+        "Writing for a solo traveller. Emphasise freedom, self-discovery, meeting people, "
+        "doing things at your own pace, and the particular confidence of travelling alone. "
+        "Never frame solo travel as lonely - frame it as liberating."
+    ),
+}
+
 _DEFAULT_TARGET = (50, 65)
 
 
+def build_modifier_text(season: str, affluence: str, traveller: str) -> str:
+    """Build additional prompt context from tone modifiers."""
+    parts = []
+    if season and season in SEASON_FRAGMENTS:
+        parts.append(SEASON_FRAGMENTS[season])
+    if affluence and affluence in AFFLUENCE_FRAGMENTS:
+        parts.append(AFFLUENCE_FRAGMENTS[affluence])
+    if traveller and traveller in TRAVELLER_FRAGMENTS:
+        parts.append(TRAVELLER_FRAGMENTS[traveller])
+    return "\n\n".join(parts)
+
+
 def compose_system_prompt(
-    tone: str, audience: str, formality: str, detail_style: str
+    tone: str, audience: str, formality: str, detail_style: str,
+    modifier_text: str = "",
 ) -> str:
     """Build a full transform system prompt from style dimension values."""
     tone_text = TONE_FRAGMENTS.get(tone, TONE_FRAGMENTS["aspirational_warm"])
@@ -194,17 +280,24 @@ def compose_system_prompt(
     formality_text = FORMALITY_FRAGMENTS.get(formality, FORMALITY_FRAGMENTS["elegant_editorial"])
     detail_text = DETAIL_FRAGMENTS.get(detail_style, DETAIL_FRAGMENTS["sensory_evocative"])
 
-    return (
+    prompt = (
         "You are a luxury travel copywriter. Your job is to transform supplier property "
         "descriptions into polished marketing copy.\n\n"
         f"TONE:\n{tone_text}\n\n"
         f"TARGET AUDIENCE:\n{audience_text}\n\n"
         f"WRITING STYLE:\n{formality_text}\n\n"
-        f"DETAIL APPROACH:\n{detail_text}\n\n"
-        "Transform the supplier text into approximately 150-200 words of polished copy. "
+        f"DETAIL APPROACH:\n{detail_text}"
+    )
+
+    if modifier_text:
+        prompt += f"\n\nADDITIONAL CONTEXT:\n{modifier_text}"
+
+    prompt += (
+        "\n\nTransform the supplier text into approximately 150-200 words of polished copy. "
         "Preserve all factual details. Do not invent facilities or features not mentioned "
         "in the source."
     )
+    return prompt
 
 
 def get_target_range(

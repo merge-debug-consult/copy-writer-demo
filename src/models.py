@@ -10,9 +10,16 @@ class StyleDimensions(BaseModel):
     detail_style: str = "sensory_evocative"
 
 
+class ToneModifiers(BaseModel):
+    season: str = ""
+    affluence: str = ""
+    traveller: str = ""
+
+
 class GenerateRequest(BaseModel):
     input_text: str
     style: StyleDimensions = StyleDimensions()
+    modifiers: ToneModifiers = ToneModifiers()
 
 
 class ScoreDimension(BaseModel):

@@ -27,7 +27,7 @@ app.add_middleware(
 
 @app.post("/generate", response_model=GenerateResponse)
 async def generate_endpoint(request: GenerateRequest) -> GenerateResponse:
-    return await generate(request.input_text, request.style)
+    return await generate(request.input_text, request.style, request.modifiers)
 
 
 @app.post("/analyse-image", response_model=ImageAnalyseResponse)
