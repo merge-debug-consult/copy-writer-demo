@@ -138,8 +138,14 @@ export default function CopyTransformer() {
       {showErrorModal && <ErrorModal onClose={() => setShowErrorModal(false)} />}
 
       {!responses && !loading && (
-        <div className="empty-state">
-          <p>Select a property above to see all four voices side by side</p>
+        <div className="intro-panel">
+          <h2>How it works</h2>
+          <ul>
+            <li>Select a property above to instantly see the same text rewritten in <strong>4 brand voices</strong></li>
+            <li>Each voice has its own tone, audience, and style &mdash; from editorial luxury to philosophical competitor</li>
+            <li>Switch between <strong>Website, Instagram, Brochure</strong> and <strong>TE Briefing</strong> channels in each card</li>
+            <li>Use <strong>Custom Text</strong> to paste any supplier copy and generate all 4 voices live</li>
+          </ul>
         </div>
       )}
 
@@ -157,7 +163,7 @@ export default function CopyTransformer() {
           {/* Supplier original - collapsed */}
           <details className="input-details">
             <summary className="input-summary">
-              Supplier Original
+              Supplier Original &mdash; click to see input text
               {inputReadability && (
                 <span className="input-fre">
                   Readability: {inputReadability.flesch_reading_ease.toFixed(0)}
