@@ -47,6 +47,10 @@ export default function CopyTransformer() {
   function handleCustomClick() {
     setActivePreset(null)
     setShowCustom(true)
+    setResponses(null)
+    setInputReadability(null)
+    setInputQualitative(null)
+    setInputText('')
   }
 
   async function handleTransform() {
