@@ -12,6 +12,7 @@ from .models import (
     GenerateResponse,
     ImageAnalyseResponse,
     StyleDimensions,
+    ToneModifiers,
 )
 from .orchestrate import analyse_image, generate
 
@@ -38,11 +39,15 @@ async def analyse_image_endpoint(
     audience: str = Form("couples_friends"),
     formality: str = Form("elegant_editorial"),
     detail_style: str = Form("sensory_evocative"),
+    season: str = Form(""),
+    affluence: str = Form(""),
+    traveller: str = Form(""),
 ) -> ImageAnalyseResponse:
     image_bytes = await image.read()
     style = StyleDimensions(
         tone=tone, audience=audience, formality=formality, detail_style=detail_style
     )
+    modifiers = ToneModifiers(season=season, affluence=affluence, traveller=traveller)
     return await analyse_image(
-        image_bytes, style, text=text if text.strip() else None
+        image_bytes, style, text=text if text.strip() else None, modifiers=modifiers
     )

@@ -1,6 +1,9 @@
 """Orchestration: chains LLM calls and scoring into workflows."""
 
 import asyncio
+import json
+from datetime import datetime, timezone
+from pathlib import Path
 
 from .models import (
     ChannelOutputs,
@@ -24,6 +27,22 @@ from .scoring import compute_readability
 from .voices import build_modifier_text, get_target_range
 
 MAX_ITERATIONS = 3
+LOG_DIR = Path(__file__).parent.parent / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+
+
+def _log_generation(input_text: str, system_prompt: str, output_text: str, style, modifiers) -> None:
+    entry = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "style": style.model_dump() if style else None,
+        "modifiers": modifiers.model_dump() if modifiers else None,
+        "system_prompt": system_prompt,
+        "input_text": input_text[:500],
+        "output_text": output_text[:500],
+    }
+    log_file = LOG_DIR / "generations.jsonl"
+    with open(log_file, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
 async def generate(
@@ -49,6 +68,8 @@ async def generate(
     input_qualitative, output_text = await asyncio.gather(
         input_qual_task, transform_task
     )
+
+    _log_generation(input_text, system_prompt, output_text, style, modifiers)
 
     # Refine loop
     fre = compute_readability(output_text).flesch_reading_ease
@@ -87,7 +108,8 @@ async def generate(
 
 
 async def analyse_image(
-    image_bytes: bytes, style: StyleDimensions, text: str | None = None
+    image_bytes: bytes, style: StyleDimensions, text: str | None = None,
+    modifiers: ToneModifiers | None = None,
 ) -> ImageAnalyseResponse:
     image_description = await describe_image(image_bytes)
 
@@ -111,8 +133,12 @@ async def analyse_image(
         )
 
     # Mode A: image to copy
+    modifier_text = ""
+    if modifiers:
+        modifier_text = build_modifier_text(modifiers.season, modifiers.affluence, modifiers.traveller)
     system_prompt = build_transform_system(
-        style.tone, style.audience, style.formality, style.detail_style
+        style.tone, style.audience, style.formality, style.detail_style,
+        modifier_text=modifier_text,
     )
     generated_copy = await generate_from_image(image_description, system_prompt)
 

@@ -244,44 +244,28 @@ AFFLUENCE_FRAGMENTS: dict[str, str] = {
 
 TRAVELLER_FRAGMENTS: dict[str, str] = {
     "couple": (
-        "TRAVELLER: COUPLE. The copy MUST be written specifically for a couple. "
-        "Use 'you both', 'together', 'the two of you'. Emphasise shared discoveries, "
-        "intimate dining, side-by-side experiences, quiet mornings together, the joy of "
-        "exploring somewhere new as a pair. Every scene should have two people in it."
+        "TRAVELLER: COUPLE. Two people travelling together. Shared discoveries, "
+        "intimate dining, side-by-side experiences, quiet mornings together."
     ),
     "honeymoon": (
-        "TRAVELLER: HONEYMOONERS. The copy MUST be written as a honeymoon. "
-        "This is the most important trip of their lives so far. Use language of celebration, "
-        "romance, and firsts: 'your first morning as newlyweds', 'champagne at sunset', "
-        "'a trip you'll tell the story of forever'. Emphasise privacy, indulgence, romance, "
-        "and the sense that this trip marks the beginning of everything."
+        "TRAVELLER: HONEYMOONERS. Just married. Celebration, romance, firsts. "
+        "Privacy, indulgence, the beginning of everything."
     ),
     "family_young": (
-        "TRAVELLER: FAMILY WITH YOUNG CHILDREN. The copy MUST speak directly to parents. "
-        "Address their real concerns: 'while the little ones are settled with the kids club', "
-        "'flexible enough for nap schedules', 'the kind of holiday where everyone sleeps well'. "
-        "Emphasise childcare, safety, easy logistics, family-friendly dining, and the guilt-free "
-        "freedom of knowing the children are happy and looked after."
+        "TRAVELLER: FAMILY WITH YOUNG CHILDREN (under 8). Address parents. "
+        "Childcare, safety, nap schedules, easy logistics, guilt-free parent time."
     ),
     "family_teens": (
-        "TRAVELLER: FAMILY WITH TEENAGERS. The copy MUST acknowledge the teen dynamic. "
-        "Emphasise activities that genuinely excite teens (not patronise them): water sports, "
-        "adventure, late-night pizza, their own space. Address parents too: 'the trip where "
-        "everyone actually wants to do the same thing', 'they'll put the phone down for this'. "
-        "The win is the whole family bonding without anyone feeling dragged along."
+        "TRAVELLER: FAMILY WITH TEENAGERS. Activities that excite teens, not patronise them. "
+        "The whole family bonding without anyone feeling dragged along."
     ),
     "friends_group": (
-        "TRAVELLER: GROUP OF FRIENDS. The copy MUST be written for a group trip. "
-        "Use 'the group', 'your crew', 'everyone'. Emphasise shared villas, group dining, "
-        "late nights, shared adventures, inside jokes in the making. The tone should feel "
-        "like planning the trip everyone's been talking about for months."
+        "TRAVELLER: GROUP OF FRIENDS. Shared fun, group dining, late nights, "
+        "shared adventures, the trip everyone's been talking about."
     ),
     "solo": (
-        "TRAVELLER: SOLO TRAVELLER. The copy MUST be written for someone travelling alone. "
-        "Use 'you' singularly. Emphasise freedom, self-discovery, going at your own pace, "
-        "the confidence of a table for one, meeting locals, and the particular clarity that "
-        "comes from being somewhere new with nobody else's agenda. "
-        "NEVER frame solo travel as lonely - it is liberating, intentional, and brave."
+        "TRAVELLER: SOLO. One person. Freedom, own pace, self-discovery, "
+        "confidence of independence. Never frame as lonely."
     ),
 }
 
@@ -321,7 +305,18 @@ def compose_system_prompt(
 
     if modifier_text:
         prompt += (
-            "\n\nCRITICAL REQUIREMENTS - these MUST shape the entire output, not just a sentence or two:\n"
+            "\n\nCRITICAL REQUIREMENTS.\n\n"
+            "Step 1: Before writing, determine WHO this is for by combining the target audience "
+            "above with the traveller type below. Examples of how to combine:\n"
+            "- Family-focused audience + solo traveller = a SINGLE PARENT holidaying with their children\n"
+            "- Family-focused audience + couple = parents on a trip together, kids in club or with grandparents\n"
+            "- Family-focused audience + honeymoon = newly-weds thinking about future family holidays\n"
+            "- Ultra-luxury audience + budget price = an insider who finds smart luxury without overpaying\n"
+            "- Ultra-luxury audience + friends = a private group celebration, milestone event\n"
+            "- Any audience + winter/summer = write the ENTIRE piece in that season's atmosphere\n\n"
+            "Step 2: Write for THAT combined person in THAT season/price bracket. "
+            "Every sentence must reflect ALL active modifiers AND the brand voice. "
+            "If something seems contradictory, find the creative intersection - it always exists.\n\n"
             f"{modifier_text}"
         )
 

@@ -34,6 +34,9 @@ export default function ImageStudio({ style }) {
     formData.append('audience', style.audience)
     formData.append('formality', style.formality)
     formData.append('detail_style', style.detail_style)
+    formData.append('season', '')
+    formData.append('affluence', '')
+    formData.append('traveller', '')
 
     try {
       const res = await fetch(`${API_BASE}/analyse-image`, {
