@@ -178,7 +178,7 @@ BRAND_PRESETS: dict[str, dict] = {
         "detail_style": "contextual_philosophical",
         "target_min": 55,
         "target_max": 70,
-        "label": "Competitor OTA",
+        "label": "Competitor: Black Tomato",
     },
 }
 

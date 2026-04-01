@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import ChannelTabs from './ChannelTabs.jsx'
-import ReadabilityGauge from './ReadabilityGauge.jsx'
-import QualitativeScores from './QualitativeScores.jsx'
+import CompactReadability from './CompactReadability.jsx'
+import CompactScores from './CompactScores.jsx'
 
-export default function VoiceOutputCard({ label, colour, response, targetRange }) {
+export default function VoiceOutputCard({ label, colour, description, response, targetRange }) {
   const [activeChannel, setActiveChannel] = useState('website')
 
   return (
     <div className="voice-card">
       <div className="voice-card-header" style={{ borderLeftColor: colour }}>
         <span className="voice-card-dot" style={{ background: colour }} />
-        {label}
+        <div>
+          <div className="voice-card-name">{label}</div>
+          {description && <div className="voice-card-desc">{description}</div>}
+        </div>
       </div>
       <div className="voice-card-body">
         {response.channels ? (
@@ -22,8 +25,8 @@ export default function VoiceOutputCard({ label, colour, response, targetRange }
         ) : (
           <p className="panel-text">{response.output_text}</p>
         )}
-        <ReadabilityGauge readability={response.output_readability} targetRange={targetRange} />
-        <QualitativeScores qualitative={response.output_qualitative} />
+        <CompactReadability readability={response.output_readability} targetRange={targetRange} />
+        <CompactScores qualitative={response.output_qualitative} />
       </div>
     </div>
   )

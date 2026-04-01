@@ -211,7 +211,82 @@ body {
   border-color: var(--sd-green);
 }
 
-/* Preset selector */
+/* Source tabs (presets + custom) */
+.source-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.source-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  background: var(--sd-white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--sd-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.source-tab:hover {
+  border-color: var(--sd-green-light);
+}
+
+.source-tab.active {
+  border-color: var(--sd-green);
+  background: var(--sd-green);
+  color: var(--sd-white);
+}
+
+.source-tab-icon {
+  font-size: 1rem;
+}
+
+/* Supplier original collapsed */
+.input-details {
+  margin-bottom: 1rem;
+  background: var(--sd-white);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.input-summary {
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sd-text-light);
+  background: #f0f0ec;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+.input-summary::-webkit-details-marker { display: none; }
+.input-summary::before { content: '\u25B6'; font-size: 0.6rem; transition: transform 0.2s; }
+details[open] .input-summary::before { transform: rotate(90deg); }
+
+.input-fre {
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--sd-text-light);
+  margin-left: auto;
+}
+
+.input-details-body {
+  padding: 1rem;
+}
+
+/* Legacy preset selector (kept for image page) */
 .preset-selector {
   display: flex;
   gap: 1rem;
@@ -369,12 +444,7 @@ body {
 }
 
 .voice-card-header {
-  padding: 0.6rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--sd-text);
+  padding: 0.5rem 0.75rem;
   background: var(--sd-grey);
   border-left: 4px solid;
   display: flex;
@@ -383,14 +453,121 @@ body {
 }
 
 .voice-card-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
+.voice-card-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sd-text);
+  letter-spacing: 0.02em;
+}
+
+.voice-card-desc {
+  font-size: 0.65rem;
+  color: var(--sd-text-light);
+  margin-top: 0.05rem;
+}
+
 .voice-card-body {
-  padding: 1rem;
+  padding: 0.75rem;
+}
+
+.voice-card-body .panel-text {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Compact readability (for voice cards) */
+.compact-readability {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  margin-top: 0.5rem;
+  border-top: 1px solid #eee;
+  font-size: 0.7rem;
+}
+
+.compact-readability-label {
+  color: var(--sd-text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.6rem;
+}
+
+.compact-readability-score {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.compact-readability-desc {
+  color: var(--sd-text-light);
+}
+
+.compact-readability-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--sd-green);
+  background: rgba(0, 64, 46, 0.08);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+/* Compact quality scores (for voice cards) */
+.compact-scores {
+  margin-top: 0.35rem;
+  border-top: 1px solid #eee;
+  padding-top: 0.35rem;
+}
+
+.compact-scores-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.compact-scores-label {
+  color: var(--sd-text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.6rem;
+  margin-right: 0.2rem;
+}
+
+.compact-score-pill {
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+.compact-score-pill strong {
+  font-size: 0.7rem;
+}
+
+.compact-scores-detail {
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.compact-score-rationale {
+  font-size: 0.65rem;
+  color: var(--sd-text-light);
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.compact-score-rationale strong {
+  color: var(--sd-text);
 }
 
 /* Comparison panels (kept for image page) */
@@ -449,10 +626,10 @@ body {
 }
 
 .channel-tab {
-  padding: 0.5rem 1rem;
+  padding: 0.35rem 0.65rem;
   border: none;
   background: transparent;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 500;
   color: var(--sd-text-light);
   cursor: pointer;

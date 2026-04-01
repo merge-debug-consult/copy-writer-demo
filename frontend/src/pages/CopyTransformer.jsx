@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import PresetSelector from '../components/PresetSelector.jsx'
 import ToneModifiers from '../components/ToneModifiers.jsx'
 import ReadabilityGauge from '../components/ReadabilityGauge.jsx'
 import QualitativeScores from '../components/QualitativeScores.jsx'
@@ -16,12 +15,14 @@ const VOICE_KEYS = BRAND_PRESETS.map((bp) => ({
   colour: bp.colour,
   style: bp.style,
   targetRange: bp.targetRange,
+  description: bp.description,
 }))
 
 const DEFAULT_MODIFIERS = { season: '', affluence: '', traveller: '' }
 
 export default function CopyTransformer() {
   const [activePreset, setActivePreset] = useState(null)
+  const [showCustom, setShowCustom] = useState(false)
   const [customText, setCustomText] = useState('')
   const [inputText, setInputText] = useState('')
   const [inputReadability, setInputReadability] = useState(null)
@@ -33,6 +34,7 @@ export default function CopyTransformer() {
 
   function handlePresetClick(preset) {
     setActivePreset(preset.id)
+    setShowCustom(false)
     setInputText(preset.input_text)
     setCustomText('')
     setResponses(preset.responses)
@@ -41,11 +43,15 @@ export default function CopyTransformer() {
     setInputQualitative(first.input_qualitative)
   }
 
+  function handleCustomClick() {
+    setActivePreset(null)
+    setShowCustom(true)
+  }
+
   async function handleTransform() {
     const text = customText.trim()
     if (!text) return
 
-    setActivePreset(null)
     setInputText(text)
     setResponses(null)
     setInputReadability(null)
@@ -85,39 +91,55 @@ export default function CopyTransformer() {
     }
   }
 
-  const hasModifiers = modifiers.season || modifiers.affluence || modifiers.traveller
-
   return (
     <>
-      <PresetSelector
-        presets={PRESETS}
-        activeId={activePreset}
-        onSelect={handlePresetClick}
-      />
-
-      <div className="custom-input-area">
-        <textarea
-          placeholder="Or paste your own supplier property description here..."
-          value={customText}
-          onChange={(e) => setCustomText(e.target.value)}
-        />
-        <div className="custom-input-controls">
-          <ToneModifiers modifiers={modifiers} onChange={setModifiers} />
+      {/* Preset pills + Custom tab */}
+      <div className="source-tabs">
+        {PRESETS.map((preset) => (
           <button
-            className="transform-btn"
-            onClick={handleTransform}
-            disabled={loading || !customText.trim()}
+            key={preset.id}
+            className={`source-tab ${activePreset === preset.id ? 'active' : ''}`}
+            onClick={() => handlePresetClick(preset)}
           >
-            {loading ? 'Generating all 4 voices...' : 'Transform'}
+            <span className="source-tab-icon">{preset.icon}</span>
+            {preset.label}
           </button>
-        </div>
+        ))}
+        <button
+          className={`source-tab ${showCustom ? 'active' : ''}`}
+          onClick={handleCustomClick}
+        >
+          Custom Text
+        </button>
       </div>
+
+      {/* Custom text expandable area */}
+      {showCustom && (
+        <div className="custom-input-area">
+          <textarea
+            placeholder="Paste a supplier property description here..."
+            value={customText}
+            onChange={(e) => setCustomText(e.target.value)}
+            rows={4}
+          />
+          <div className="custom-input-controls">
+            <ToneModifiers modifiers={modifiers} onChange={setModifiers} />
+            <button
+              className="transform-btn"
+              onClick={handleTransform}
+              disabled={loading || !customText.trim()}
+            >
+              {loading ? 'Generating...' : 'Transform'}
+            </button>
+          </div>
+        </div>
+      )}
 
       {showErrorModal && <ErrorModal onClose={() => setShowErrorModal(false)} />}
 
       {!responses && !loading && (
         <div className="empty-state">
-          <p>Select a preset above or paste your own text to see all four voices side by side</p>
+          <p>Select a property above to see all four voices side by side</p>
         </div>
       )}
 
@@ -125,16 +147,24 @@ export default function CopyTransformer() {
         <div className="card">
           <div className="loading-overlay">
             <div className="loading-spinner" />
-            <p className="loading-stage">Generating all 4 voice variants in parallel...</p>
+            <p className="loading-stage">Generating all 4 voice variants...</p>
           </div>
         </div>
       )}
 
       {responses && (
         <>
-          <div className="panel input-panel-full">
-            <div className="panel-header input">Supplier Original</div>
-            <div className="panel-body">
+          {/* Supplier original - collapsed */}
+          <details className="input-details">
+            <summary className="input-summary">
+              Supplier Original
+              {inputReadability && (
+                <span className="input-fre">
+                  Readability: {inputReadability.flesch_reading_ease.toFixed(0)}
+                </span>
+              )}
+            </summary>
+            <div className="input-details-body">
               <p className="panel-text">{inputText}</p>
               {inputReadability && (
                 <ReadabilityGauge readability={inputReadability} targetRange={{ min: 50, max: 65 }} />
@@ -143,8 +173,9 @@ export default function CopyTransformer() {
                 <QualitativeScores qualitative={inputQualitative} />
               )}
             </div>
-          </div>
+          </details>
 
+          {/* 2x2 voice grid */}
           <div className="voice-grid">
             {VOICE_KEYS.map((voice) => {
               const voiceResponse = responses[voice.key]
@@ -154,6 +185,7 @@ export default function CopyTransformer() {
                   key={voice.key}
                   label={voice.label}
                   colour={voice.colour}
+                  description={voice.description}
                   response={voiceResponse}
                   targetRange={voice.targetRange}
                 />

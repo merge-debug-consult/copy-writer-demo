@@ -83,7 +83,7 @@ export const BRAND_PRESETS = [
   },
   {
     key: 'black_tomato',
-    label: 'Competitor OTA',
+    label: 'Competitor: Black Tomato',
     colour: '#E4312B',
     style: {
       tone: 'philosophical_emotional',
