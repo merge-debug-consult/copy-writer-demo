@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import VoiceSelector from './components/VoiceSelector.jsx'
 import VoiceGuide from './components/VoiceGuide.jsx'
+import ToneModifiers from './components/ToneModifiers.jsx'
 import CopyTransformer from './pages/CopyTransformer.jsx'
 import ImageStudio from './pages/ImageStudio.jsx'
 import { BRAND_PRESETS } from './data/voiceProfiles.js'
@@ -11,6 +12,7 @@ export default function App() {
   const [activePage, setActivePage] = useState('copy')
   const [style, setStyle] = useState(DEFAULT_STYLE)
   const [activeVoiceBrand, setActiveVoiceBrand] = useState('scott_dunn')
+  const [imageModifiers, setImageModifiers] = useState({ season: '', affluence: '', traveller: '' })
 
   function handleStyleChange(newStyle) {
     setStyle(newStyle)
@@ -59,6 +61,7 @@ export default function App() {
               onStyleChange={handleStyleChange}
               onPresetSelect={handlePresetSelect}
             />
+            <ToneModifiers modifiers={imageModifiers} onChange={setImageModifiers} />
             <VoiceGuide style={style} activePreset={activeVoiceBrand} />
           </aside>
         )}
@@ -67,7 +70,7 @@ export default function App() {
           {activePage === 'copy' ? (
             <CopyTransformer />
           ) : (
-            <ImageStudio style={style} />
+            <ImageStudio style={style} modifiers={imageModifiers} />
           )}
         </main>
       </div>

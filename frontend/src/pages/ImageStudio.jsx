@@ -9,7 +9,7 @@ import { getTargetRange } from '../data/voiceProfiles.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000'
 
-export default function ImageStudio({ style }) {
+export default function ImageStudio({ style, modifiers = {} }) {
   const [imageFile, setImageFile] = useState(null)
   const [text, setText] = useState('')
   const [response, setResponse] = useState(null)
@@ -34,9 +34,9 @@ export default function ImageStudio({ style }) {
     formData.append('audience', style.audience)
     formData.append('formality', style.formality)
     formData.append('detail_style', style.detail_style)
-    formData.append('season', '')
-    formData.append('affluence', '')
-    formData.append('traveller', '')
+    formData.append('season', modifiers.season || '')
+    formData.append('affluence', modifiers.affluence || '')
+    formData.append('traveller', modifiers.traveller || '')
 
     try {
       const res = await fetch(`${API_BASE}/analyse-image`, {
