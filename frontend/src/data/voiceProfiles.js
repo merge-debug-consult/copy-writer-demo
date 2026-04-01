@@ -96,7 +96,7 @@ export const BRAND_PRESETS = [
     },
     description: 'Feeling over destination. Philosophical, punchy, "rare and remarkable."',
     targetRange: { min: 55, max: 70 },
-    targetRationale: 'Punchy and accessible, emotion over complexity',
+    targetRationale: null,
   },
 ]
 
