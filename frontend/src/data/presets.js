@@ -5,46 +5,111 @@ export const PRESETS = [
     label: 'Ski',
     name: 'Hotel Chalet del Sogno, Dolomites',
     input_text: `Hotel Chalet del Sogno is the only five star hotel in Madonna di Campiglio in the heart of the Dolomites. The hotel is an eco-friendly property heated with geothermal energy and built using natural materials including wood, wool, lime and local stone. It has an ideal ski in/ski out location right next to the Spinale lift, and is just a 5-minute walk from the village center. Family run, the hotel has warm and welcoming staff who are always available to help. The hotel features a wellness area with spa facilities, gourmet cuisine, and luxurious accommodation. The Chalet del Sogno serves a good breakfast with a variety of local cheeses and meats. It is just 25m from the end of the ski slope and the Spinale cable car, and 250m from the center of Madonna di Campiglio. The hotel is perfect for families, couples and friends.`,
-    response: {
-      input_readability: {
-        flesch_reading_ease: 52.3,
-        flesch_kincaid_grade: 10.8,
-        gunning_fog: 13.1,
-      },
-      input_qualitative: {
-        persuasiveness: { score: 2, rationale: 'Factual but does not inspire action or longing' },
-        sensory_language: { score: 1, rationale: 'No sensory detail - purely informational listing of features' },
-        emotional_resonance: { score: 2, rationale: 'No connection to how the trip will feel' },
-        specificity: { score: 4, rationale: 'Good concrete details about facilities, distances and materials' },
-        brand_voice: { score: 1, rationale: 'Reads like a supplier fact sheet, not a luxury curator' },
-      },
-      output_text: `Step out of your boots and onto the slopes \u2013 Chalet del Sogno sits just 25 metres from the Spinale cable car, making first tracks an effortless morning ritual. Madonna di Campiglio\u2019s only five-star hotel brings a warmth that goes beyond the geothermal heating beneath your feet. The family who run it have crafted something rare: genuine alpine hospitality wrapped in considered luxury, built from the Dolomites themselves \u2013 local stone, natural wood, wool and lime.
-
-Mornings begin with a breakfast spread of regional cheeses and cured meats that tells you exactly where you are. After a day exploring the Brenta Dolomites, the spa becomes your reward \u2013 a quiet counterpoint to the mountain air outside. The village centre is a five-minute stroll for those evenings when you want to wander, though you may find it hard to leave the warmth of the hotel itself.
-
-Whether you\u2019re here as a family, a couple or a group of friends, this is a place where the mountains feel close and the details feel personal.`,
-      output_readability: {
-        flesch_reading_ease: 61.2,
-        flesch_kincaid_grade: 9.1,
-        gunning_fog: 10.8,
-      },
-      output_qualitative: {
-        persuasiveness: { score: 4, rationale: 'Places the reader in the experience with compelling scene-setting' },
-        sensory_language: { score: 5, rationale: 'Rich sensory detail - warmth, mountain air, breakfast spread' },
-        emotional_resonance: { score: 4, rationale: 'Evokes the feeling of alpine escape and personal attention' },
-        specificity: { score: 4, rationale: 'Retains all factual details while weaving them into narrative' },
-        brand_voice: { score: 5, rationale: 'Distinctly luxury editorial with expert insider tone' },
-      },
-      iterations: [
-        {
-          text: `Step out of your boots and onto the slopes \u2013 Chalet del Sogno sits just 25 metres from the Spinale cable car, making first tracks an effortless morning ritual. Madonna di Campiglio\u2019s only five-star hotel brings a warmth that goes beyond the geothermal heating beneath your feet. The family who run it have crafted something rare: genuine alpine hospitality wrapped in considered luxury, built from the Dolomites themselves \u2013 local stone, natural wood, wool and lime.
-
-Mornings begin with a breakfast spread of regional cheeses and cured meats that tells you exactly where you are. After a day exploring the Brenta Dolomites, the spa becomes your reward \u2013 a quiet counterpoint to the mountain air outside. The village centre is a five-minute stroll for those evenings when you want to wander, though you may find it hard to leave the warmth of the hotel itself.
-
-Whether you\u2019re here as a family, a couple or a group of friends, this is a place where the mountains feel close and the details feel personal.`,
-          flesch_reading_ease: 61.2,
+    responses: {
+      scott_dunn: {
+        input_readability: { flesch_reading_ease: 52.3, flesch_kincaid_grade: 10.8, gunning_fog: 13.1 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Factual but does not inspire action or longing' },
+          sensory_language: { score: 1, rationale: 'No sensory detail \u2013 purely informational listing of features' },
+          emotional_resonance: { score: 2, rationale: 'No connection to how the trip will feel' },
+          specificity: { score: 4, rationale: 'Good concrete details about facilities, distances and materials' },
+          brand_voice: { score: 1, rationale: 'Reads like a supplier fact sheet, not a luxury curator' },
         },
-      ],
+        output_text: `Step out of your boots and onto the slopes \u2013 Chalet del Sogno sits just 25 metres from the Spinale cable car, making first tracks an effortless morning ritual. Madonna di Campiglio\u2019s only five-star hotel brings a warmth that goes beyond the geothermal heating beneath your feet. The family who run it have crafted something rare: genuine alpine hospitality wrapped in considered luxury, built from the Dolomites themselves \u2013 local stone, natural wood, wool and lime.\n\nMornings begin with a breakfast spread of regional cheeses and cured meats that tells you exactly where you are. After a day exploring the Brenta Dolomites, the spa becomes your reward \u2013 a quiet counterpoint to the mountain air outside. The village centre is a five-minute stroll for those evenings when you want to wander, though you may find it hard to leave the warmth of the hotel itself.\n\nWhether you\u2019re here as a family, a couple or a group of friends, this is a place where the mountains feel close and the details feel personal.`,
+        output_readability: { flesch_reading_ease: 61.2, flesch_kincaid_grade: 9.1, gunning_fog: 10.8 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Places the reader in the experience with compelling scene-setting' },
+          sensory_language: { score: 5, rationale: 'Rich sensory detail \u2013 warmth, mountain air, breakfast spread' },
+          emotional_resonance: { score: 4, rationale: 'Evokes the feeling of alpine escape and personal attention' },
+          specificity: { score: 4, rationale: 'Retains all factual details while weaving them into narrative' },
+          brand_voice: { score: 5, rationale: 'Distinctly luxury editorial with expert insider tone' },
+        },
+        channels: {
+          website: `Step out of your boots and onto the slopes \u2013 Chalet del Sogno sits just 25 metres from the Spinale cable car, making first tracks an effortless morning ritual. Madonna di Campiglio\u2019s only five-star hotel brings a warmth that goes beyond the geothermal heating beneath your feet. The family who run it have crafted something rare: genuine alpine hospitality wrapped in considered luxury, built from the Dolomites themselves \u2013 local stone, natural wood, wool and lime.\n\nMornings begin with a breakfast spread of regional cheeses and cured meats that tells you exactly where you are. After a day exploring the Brenta Dolomites, the spa becomes your reward \u2013 a quiet counterpoint to the mountain air outside. The village centre is a five-minute stroll for those evenings when you want to wander, though you may find it hard to leave the warmth of the hotel itself.\n\nWhether you\u2019re here as a family, a couple or a group of friends, this is a place where the mountains feel close and the details feel personal.`,
+          instagram: `First tracks from your front door. Chalet del Sogno is 25 metres from the Spinale cable car \u2013 in the heart of the Dolomites, where the mountains do all the talking.\n\nGeothermal warmth. Regional cheeses at breakfast. A spa that makes you forget the slopes exist. This is Madonna di Campiglio\u2019s only five-star, and it feels every bit as personal as the family who run it. \u2744\uFE0F\n\nLink in bio for your alpine escape.`,
+          brochure: `Madonna di Campiglio\u2019s sole five-star hotel sits just 25 metres from the Spinale cable car, where the Brenta Dolomites rise in quiet grandeur. Chalet del Sogno is built from the mountains themselves \u2013 local stone, natural wood, wool and lime \u2013 warmed by geothermal energy and the genuine hospitality of the family who created it. Mornings bring regional cheeses and cured meats; evenings, the spa\u2019s gentle warmth. The village is a five-minute stroll, though few guests feel the need to leave.`,
+          te_briefing: `Hotel Chalet del Sogno, Madonna di Campiglio. Only 5-star in resort. Ski-in/ski-out \u2013 25m from Spinale cable car, 250m from village centre. Family-run, eco-friendly (geothermal heating, natural materials). Wellness spa on-site. Strong breakfast offering with local produce. Suits couples, families and friend groups. Key selling point: location combined with genuine alpine character. Not a corporate luxury hotel \u2013 the personal touch is the differentiator. Good for guests wanting Dolomites skiing without sacrificing comfort.`,
+        },
+        iterations: [{ text: `Step out of your boots and onto the slopes \u2013 Chalet del Sogno sits just 25 metres from the Spinale cable car, making first tracks an effortless morning ritual. Madonna di Campiglio\u2019s only five-star hotel brings a warmth that goes beyond the geothermal heating beneath your feet. The family who run it have crafted something rare: genuine alpine hospitality wrapped in considered luxury, built from the Dolomites themselves \u2013 local stone, natural wood, wool and lime.\n\nMornings begin with a breakfast spread of regional cheeses and cured meats that tells you exactly where you are. After a day exploring the Brenta Dolomites, the spa becomes your reward \u2013 a quiet counterpoint to the mountain air outside. The village centre is a five-minute stroll for those evenings when you want to wander, though you may find it hard to leave the warmth of the hotel itself.\n\nWhether you\u2019re here as a family, a couple or a group of friends, this is a place where the mountains feel close and the details feel personal.`, flesch_reading_ease: 61.2 }],
+      },
+      sd_private: {
+        input_readability: { flesch_reading_ease: 52.3, flesch_kincaid_grade: 10.8, gunning_fog: 13.1 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Factual but does not inspire action or longing' },
+          sensory_language: { score: 1, rationale: 'No sensory detail \u2013 purely informational listing of features' },
+          emotional_resonance: { score: 2, rationale: 'No connection to how the trip will feel' },
+          specificity: { score: 4, rationale: 'Good concrete details about facilities, distances and materials' },
+          brand_voice: { score: 1, rationale: 'Reads like a supplier fact sheet, not a luxury curator' },
+        },
+        output_text: `Madonna di Campiglio\u2019s only five-star. Twenty-five metres from the Spinale cable car. The family who built Chalet del Sogno chose their materials from the Dolomites themselves \u2013 stone, wood, wool, lime \u2013 and heat the entire property with geothermal energy. It is a detail that tells you everything about how they think.\n\nWe arrange early access to the slopes, a breakfast table with the region\u2019s finest cheeses and cured meats, and a spa that requires no reservation. The village centre is a five-minute walk, though we find most guests prefer the quiet of the hotel by evening.\n\nThis is not a place that announces itself. It earns your attention.`,
+        output_readability: { flesch_reading_ease: 52.8, flesch_kincaid_grade: 8.9, gunning_fog: 10.2 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Compelling through restraint \u2013 creates intrigue without overselling' },
+          sensory_language: { score: 3, rationale: 'Selective sensory detail \u2013 materials and food, not overdone' },
+          emotional_resonance: { score: 4, rationale: 'Quiet confidence that speaks to the discerning reader' },
+          specificity: { score: 4, rationale: 'Key facts preserved with authoritative brevity' },
+          brand_voice: { score: 5, rationale: 'Perfectly captures understated ultra-luxury positioning' },
+        },
+        channels: {
+          website: `Madonna di Campiglio\u2019s only five-star. Twenty-five metres from the Spinale cable car. The family who built Chalet del Sogno chose their materials from the Dolomites themselves \u2013 stone, wood, wool, lime \u2013 and heat the entire property with geothermal energy. It is a detail that tells you everything about how they think.\n\nWe arrange early access to the slopes, a breakfast table with the region\u2019s finest cheeses and cured meats, and a spa that requires no reservation. The village centre is a five-minute walk, though we find most guests prefer the quiet of the hotel by evening.\n\nThis is not a place that announces itself. It earns your attention.`,
+          instagram: `25 metres from the lift. Geothermal warmth beneath your feet. A family who built their hotel from the Dolomites themselves.\n\nChalet del Sogno doesn\u2019t announce itself. It doesn\u2019t need to.\n\nSpeak to your Relationship Manager.`,
+          brochure: `The only five-star in Madonna di Campiglio stands twenty-five metres from the Spinale cable car. Chalet del Sogno is built from the mountains it overlooks \u2013 local stone, natural wood, wool and lime \u2013 and heated by the earth beneath it. The family behind it have created something that needs no introduction. We arrange the rest.`,
+          te_briefing: `Chalet del Sogno, Madonna di Campiglio. Resort\u2019s sole 5-star property. 25m from Spinale cable car. Family-owned, eco-credentials (geothermal, natural materials). Strong for UHNW guests wanting understated alpine luxury \u2013 not a flashy resort. Intimate scale, personal service. Spa, gourmet breakfast with regional produce. Village 250m. Position as \u201cthe insider\u2019s choice\u201d \u2013 the property doesn\u2019t need to sell itself.`,
+        },
+        iterations: [{ text: `Madonna di Campiglio\u2019s only five-star. Twenty-five metres from the Spinale cable car. The family who built Chalet del Sogno chose their materials from the Dolomites themselves \u2013 stone, wood, wool, lime \u2013 and heat the entire property with geothermal energy. It is a detail that tells you everything about how they think.\n\nWe arrange early access to the slopes, a breakfast table with the region\u2019s finest cheeses and cured meats, and a spa that requires no reservation. The village centre is a five-minute walk, though we find most guests prefer the quiet of the hotel by evening.\n\nThis is not a place that announces itself. It earns your attention.`, flesch_reading_ease: 52.8 }],
+      },
+      explorers: {
+        input_readability: { flesch_reading_ease: 52.3, flesch_kincaid_grade: 10.8, gunning_fog: 13.1 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Factual but does not inspire action or longing' },
+          sensory_language: { score: 1, rationale: 'No sensory detail \u2013 purely informational listing of features' },
+          emotional_resonance: { score: 2, rationale: 'No connection to how the trip will feel' },
+          specificity: { score: 4, rationale: 'Good concrete details about facilities, distances and materials' },
+          brand_voice: { score: 1, rationale: 'Reads like a supplier fact sheet, not a luxury curator' },
+        },
+        output_text: `While you take one more run down the Spinale, they\u2019re building snow castles with their new best friend. That\u2019s the deal at Chalet del Sogno \u2013 you ski, they play, everyone\u2019s happy.\n\nMadonna di Campiglio\u2019s only five-star hotel is just 25 metres from the cable car, so mornings are beautifully simple: breakfast together (the kids will love the local cheeses), drop-off, and you\u2019re on the slopes before the crowds arrive. The hotel is family-run, built from natural Dolomite materials and heated with geothermal energy \u2013 warm in every sense.\n\nThe spa is your afternoon reward, the village centre a five-minute stroll for gelato and wandering. And when you\u2019re all back together? That\u2019s when the real holiday begins. Tired legs, big smiles, stories from the day.`,
+        output_readability: { flesch_reading_ease: 71.4, flesch_kincaid_grade: 7.2, gunning_fog: 9.1 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Speaks directly to the parent\u2019s desire for guilt-free skiing' },
+          sensory_language: { score: 3, rationale: 'Selective but effective \u2013 snow castles, gelato, tired legs' },
+          emotional_resonance: { score: 5, rationale: 'Captures the joy of family time and the relief of good childcare' },
+          specificity: { score: 4, rationale: 'All key facts woven into the family narrative naturally' },
+          brand_voice: { score: 5, rationale: 'Warm, reassuring, parent-focused \u2013 perfectly on-brand for Explorers' },
+        },
+        channels: {
+          website: `While you take one more run down the Spinale, they\u2019re building snow castles with their new best friend. That\u2019s the deal at Chalet del Sogno \u2013 you ski, they play, everyone\u2019s happy.\n\nMadonna di Campiglio\u2019s only five-star hotel is just 25 metres from the cable car, so mornings are beautifully simple: breakfast together (the kids will love the local cheeses), drop-off, and you\u2019re on the slopes before the crowds arrive. The hotel is family-run, built from natural Dolomite materials and heated with geothermal energy \u2013 warm in every sense.\n\nThe spa is your afternoon reward, the village centre a five-minute stroll for gelato and wandering. And when you\u2019re all back together? That\u2019s when the real holiday begins. Tired legs, big smiles, stories from the day.`,
+          instagram: `You ski. They play. Everyone\u2019s happy. \u2744\uFE0F\n\nChalet del Sogno is 25m from the Spinale lift, so drop-off is a breeze and first tracks are yours. Madonna di Campiglio\u2019s only five-star, family-run, and warm in every sense.\n\nThe best family ski holiday? The one where everyone has their own adventure.\n\nLink in bio for Explorers ski holidays.`,
+          brochure: `Twenty-five metres from the Spinale cable car, Chalet del Sogno makes family skiing effortless. Madonna di Campiglio\u2019s only five-star hotel is family-run, built from local Dolomite materials, and warmed by geothermal energy. Mornings begin together over regional cheeses; days unfold at your own pace \u2013 slopes for you, Explorers for them. The spa awaits your return, and the village is a five-minute stroll for evening gelato.`,
+          te_briefing: `Chalet del Sogno, Madonna di Campiglio. 5-star, family-run. Ideal for Explorers families: 25m from Spinale cable car means easy drop-off/pick-up. Natural materials, geothermal heating \u2013 eco angle appeals to family guests. Good breakfast with regional produce. Spa on-site for parent downtime. Village 250m. Position for families wanting hassle-free Dolomites skiing with quality childcare close by. Works well for multi-gen groups too.`,
+        },
+        iterations: [{ text: `While you take one more run down the Spinale, they\u2019re building snow castles with their new best friend. That\u2019s the deal at Chalet del Sogno \u2013 you ski, they play, everyone\u2019s happy.\n\nMadonna di Campiglio\u2019s only five-star hotel is just 25 metres from the cable car, so mornings are beautifully simple: breakfast together (the kids will love the local cheeses), drop-off, and you\u2019re on the slopes before the crowds arrive. The hotel is family-run, built from natural Dolomite materials and heated with geothermal energy \u2013 warm in every sense.\n\nThe spa is your afternoon reward, the village centre a five-minute stroll for gelato and wandering. And when you\u2019re all back together? That\u2019s when the real holiday begins. Tired legs, big smiles, stories from the day.`, flesch_reading_ease: 71.4 }],
+      },
+      black_tomato: {
+        input_readability: { flesch_reading_ease: 52.3, flesch_kincaid_grade: 10.8, gunning_fog: 13.1 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Factual but does not inspire action or longing' },
+          sensory_language: { score: 1, rationale: 'No sensory detail \u2013 purely informational listing of features' },
+          emotional_resonance: { score: 2, rationale: 'No connection to how the trip will feel' },
+          specificity: { score: 4, rationale: 'Good concrete details about facilities, distances and materials' },
+          brand_voice: { score: 1, rationale: 'Reads like a supplier fact sheet, not a luxury curator' },
+        },
+        output_text: `It\u2019s not about the five stars. It\u2019s about the family who heat their hotel with the earth beneath it and build their walls from the mountains outside the window. That\u2019s rare. That\u2019s remarkable.\n\nChalet del Sogno sits at the foot of the Spinale cable car in Madonna di Campiglio \u2013 twenty-five metres from the slopes, which matters \u2013 but what stays with you isn\u2019t the convenience. It\u2019s the breakfast table laden with cheeses and cured meats from the valley. It\u2019s the wood, wool, lime and local stone that make the building feel like it grew here. It\u2019s the way the family who run it make you feel less like a guest and more like someone they\u2019ve been expecting.\n\nThe Brenta Dolomites do the rest. Ski all morning, find the spa, wander the village five minutes away. Or don\u2019t. The point of a place like this is that there\u2019s no tick-list. Just you, the mountains, and a restless curiosity about what\u2019s around the next corner.`,
+        output_readability: { flesch_reading_ease: 67.3, flesch_kincaid_grade: 7.8, gunning_fog: 9.4 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Philosophically compelling \u2013 reframes the hotel through meaning' },
+          sensory_language: { score: 3, rationale: 'Some sensory detail but secondary to emotional framing' },
+          emotional_resonance: { score: 4, rationale: 'Strong emotional hook through the "rare and remarkable" philosophy' },
+          specificity: { score: 3, rationale: 'Key facts preserved but wrapped in philosophical language' },
+          brand_voice: { score: 5, rationale: 'Distinctly competitor voice \u2013 feeling over destination, punchy and philosophical' },
+        },
+        channels: {
+          website: `It\u2019s not about the five stars. It\u2019s about the family who heat their hotel with the earth beneath it and build their walls from the mountains outside the window. That\u2019s rare. That\u2019s remarkable.\n\nChalet del Sogno sits at the foot of the Spinale cable car in Madonna di Campiglio \u2013 twenty-five metres from the slopes, which matters \u2013 but what stays with you isn\u2019t the convenience. It\u2019s the breakfast table laden with cheeses and cured meats from the valley. It\u2019s the wood, wool, lime and local stone that make the building feel like it grew here. It\u2019s the way the family who run it make you feel less like a guest and more like someone they\u2019ve been expecting.\n\nThe Brenta Dolomites do the rest. Ski all morning, find the spa, wander the village five minutes away. Or don\u2019t. The point of a place like this is that there\u2019s no tick-list. Just you, the mountains, and a restless curiosity about what\u2019s around the next corner.`,
+          instagram: `It\u2019s not the five stars. It\u2019s the family who built their hotel from the mountains outside the window.\n\nChalet del Sogno, Madonna di Campiglio. Rare and remarkable. The Dolomites, the way they should be done.\n\nHow do you want to feel? Let\u2019s begin.`,
+          brochure: `It\u2019s not where you go. It\u2019s how you feel when you get there. Chalet del Sogno is twenty-five metres from the Spinale cable car, built from local stone, wood, wool and lime, heated by the earth itself. A family-run hotel in Madonna di Campiglio that feels less like a destination and more like a homecoming. The Brenta Dolomites do the rest.`,
+          te_briefing: `Chalet del Sogno, Madonna di Campiglio. 5-star, 25m from Spinale cable car. Family-run, eco-credentials (geothermal, natural materials). Competitor positioning: lead with philosophical angle \u2013 "feeling" over "facilities." Strong emotional hook but lighter on sensory specifics than SD. The "rare and remarkable" framing works but lacks SD\u2019s expert depth. Village 250m. Spa, regional breakfast.`,
+        },
+        iterations: [{ text: `It\u2019s not about the five stars. It\u2019s about the family who heat their hotel with the earth beneath it and build their walls from the mountains outside the window. That\u2019s rare. That\u2019s remarkable.\n\nChalet del Sogno sits at the foot of the Spinale cable car in Madonna di Campiglio \u2013 twenty-five metres from the slopes, which matters \u2013 but what stays with you isn\u2019t the convenience. It\u2019s the breakfast table laden with cheeses and cured meats from the valley. It\u2019s the wood, wool, lime and local stone that make the building feel like it grew here. It\u2019s the way the family who run it make you feel less like a guest and more like someone they\u2019ve been expecting.\n\nThe Brenta Dolomites do the rest. Ski all morning, find the spa, wander the village five minutes away. Or don\u2019t. The point of a place like this is that there\u2019s no tick-list. Just you, the mountains, and a restless curiosity about what\u2019s around the next corner.`, flesch_reading_ease: 67.3 }],
+      },
     },
   },
   {
@@ -53,46 +118,111 @@ Whether you\u2019re here as a family, a couple or a group of friends, this is a 
     label: 'Safari',
     name: 'Angama Mara, Kenya',
     input_text: `Angama Mara is a luxury safari lodge located in the Maasai Mara in Kenya. The lodge is split into two camps, each with fifteen suites and two family tents. The camps sit on two kopjes on the edge of the Great Rift Valley escarpment. A third kopje is reserved for picnics and sundowners, and was the filming location for key scenes in Out of Africa. Each suite is suspended off the edge of the escarpment with a 10 metre wide floor-to-ceiling glass wall providing 180 degree views. Suites have polished wooden floors and modern furnishings. The owner-manager Nicky Fitzgerald built and ran more than 60 safari lodges and camps across Africa before creating Angama Mara. The lodge provides superb hosting, attention to detail and expert guides. Game drives are conducted in open 4x4 safari vehicles with professional guides. Walking safaris, hot air balloon rides, and visits to Maasai communities are also available.`,
-    response: {
-      input_readability: {
-        flesch_reading_ease: 44.7,
-        flesch_kincaid_grade: 12.3,
-        gunning_fog: 14.8,
-      },
-      input_qualitative: {
-        persuasiveness: { score: 3, rationale: 'Interesting details but presented as a factual list rather than a compelling narrative' },
-        sensory_language: { score: 2, rationale: 'Mentions views and glass walls but lacks immersive sensory language' },
-        emotional_resonance: { score: 2, rationale: 'Facts without emotional connection to the experience' },
-        specificity: { score: 5, rationale: 'Excellent specific details - exact numbers, names, history' },
-        brand_voice: { score: 2, rationale: 'Informative supplier tone, not luxury editorial' },
-      },
-      output_text: `There are lodges with views, and then there is Angama Mara \u2013 thirty suites suspended from the rim of the Great Rift Valley, each with ten metres of floor-to-ceiling glass opening onto the Mara below. It is the kind of perspective that makes you fall quiet.
-
-The lodge sits across two intimate camps on the Oloololo Escarpment, the same ridge where Out of Africa was filmed. A third kopje is kept free for sundowners and picnics \u2013 a glass of something cold, the plains turning gold beneath you. Nicky Fitzgerald, who built over sixty safari properties across Africa before this one, designed Angama to feel less like a lodge and more like a home that happens to occupy one of the most extraordinary locations on earth. Polished wood floors, contemporary furnishings, and staff who remember your name by lunch.
-
-Your days unfold at your own pace: dawn game drives tracking big cats through the long grass, walking safaris that bring the smaller details to life, or a hot air balloon ride to see the migration from above. The guiding here is exceptional \u2013 expect real knowledge, not rehearsed commentary.`,
-      output_readability: {
-        flesch_reading_ease: 57.4,
-        flesch_kincaid_grade: 9.8,
-        gunning_fog: 11.3,
-      },
-      output_qualitative: {
-        persuasiveness: { score: 5, rationale: 'Compelling narrative that makes you want to be there immediately' },
-        sensory_language: { score: 5, rationale: 'Vivid imagery - plains turning gold, long grass, falling quiet' },
-        emotional_resonance: { score: 5, rationale: 'Deep emotional pull through personal, intimate framing' },
-        specificity: { score: 5, rationale: 'All factual details preserved and enhanced with narrative context' },
-        brand_voice: { score: 5, rationale: 'Perfectly captures the expert curator tone with understated confidence' },
-      },
-      iterations: [
-        {
-          text: `There are lodges with views, and then there is Angama Mara \u2013 thirty suites suspended from the rim of the Great Rift Valley, each with ten metres of floor-to-ceiling glass opening onto the Mara below. It is the kind of perspective that makes you fall quiet.
-
-The lodge sits across two intimate camps on the Oloololo Escarpment, the same ridge where Out of Africa was filmed. A third kopje is kept free for sundowners and picnics \u2013 a glass of something cold, the plains turning gold beneath you. Nicky Fitzgerald, who built over sixty safari properties across Africa before this one, designed Angama to feel less like a lodge and more like a home that happens to occupy one of the most extraordinary locations on earth. Polished wood floors, contemporary furnishings, and staff who remember your name by lunch.
-
-Your days unfold at your own pace: dawn game drives tracking big cats through the long grass, walking safaris that bring the smaller details to life, or a hot air balloon ride to see the migration from above. The guiding here is exceptional \u2013 expect real knowledge, not rehearsed commentary.`,
-          flesch_reading_ease: 57.4,
+    responses: {
+      scott_dunn: {
+        input_readability: { flesch_reading_ease: 44.7, flesch_kincaid_grade: 12.3, gunning_fog: 14.8 },
+        input_qualitative: {
+          persuasiveness: { score: 3, rationale: 'Interesting details but presented as a factual list' },
+          sensory_language: { score: 2, rationale: 'Mentions views and glass walls but lacks immersive sensory language' },
+          emotional_resonance: { score: 2, rationale: 'Facts without emotional connection' },
+          specificity: { score: 5, rationale: 'Excellent specific details \u2013 exact numbers, names, history' },
+          brand_voice: { score: 2, rationale: 'Informative supplier tone, not luxury editorial' },
         },
-      ],
+        output_text: `There are lodges with views, and then there is Angama Mara \u2013 thirty suites suspended from the rim of the Great Rift Valley, each with ten metres of floor-to-ceiling glass opening onto the Mara below. It is the kind of perspective that makes you fall quiet.\n\nThe lodge sits across two intimate camps on the Oloololo Escarpment, the same ridge where Out of Africa was filmed. A third kopje is kept free for sundowners and picnics \u2013 a glass of something cold, the plains turning gold beneath you. Nicky Fitzgerald, who built over sixty safari properties across Africa before this one, designed Angama to feel less like a lodge and more like a home that happens to occupy one of the most extraordinary locations on earth. Polished wood floors, contemporary furnishings, and staff who remember your name by lunch.\n\nYour days unfold at your own pace: dawn game drives tracking big cats through the long grass, walking safaris that bring the smaller details to life, or a hot air balloon ride to see the migration from above. The guiding here is exceptional \u2013 expect real knowledge, not rehearsed commentary.`,
+        output_readability: { flesch_reading_ease: 57.4, flesch_kincaid_grade: 9.8, gunning_fog: 11.3 },
+        output_qualitative: {
+          persuasiveness: { score: 5, rationale: 'Compelling narrative that makes you want to be there immediately' },
+          sensory_language: { score: 5, rationale: 'Vivid imagery \u2013 plains turning gold, long grass, falling quiet' },
+          emotional_resonance: { score: 5, rationale: 'Deep emotional pull through personal, intimate framing' },
+          specificity: { score: 5, rationale: 'All factual details preserved and enhanced with narrative context' },
+          brand_voice: { score: 5, rationale: 'Perfectly captures the expert curator tone with understated confidence' },
+        },
+        channels: {
+          website: `There are lodges with views, and then there is Angama Mara \u2013 thirty suites suspended from the rim of the Great Rift Valley, each with ten metres of floor-to-ceiling glass opening onto the Mara below. It is the kind of perspective that makes you fall quiet.\n\nThe lodge sits across two intimate camps on the Oloololo Escarpment, the same ridge where Out of Africa was filmed. A third kopje is kept free for sundowners and picnics \u2013 a glass of something cold, the plains turning gold beneath you. Nicky Fitzgerald, who built over sixty safari properties across Africa before this one, designed Angama to feel less like a lodge and more like a home that happens to occupy one of the most extraordinary locations on earth. Polished wood floors, contemporary furnishings, and staff who remember your name by lunch.\n\nYour days unfold at your own pace: dawn game drives tracking big cats through the long grass, walking safaris that bring the smaller details to life, or a hot air balloon ride to see the migration from above. The guiding here is exceptional \u2013 expect real knowledge, not rehearsed commentary.`,
+          instagram: `The view that made Out of Africa famous. Thirty suites suspended over the Great Rift Valley, ten metres of glass between you and the Mara below.\n\nAngama Mara is where the plains turn gold at sundowner hour and the guides know every big cat by name. \uD83E\uDD81\n\nThis isn\u2019t a safari. It\u2019s a perspective shift.\n\nLink in bio to start planning.`,
+          brochure: `Thirty suites hang from the rim of the Great Rift Valley, each framed by ten metres of floor-to-ceiling glass. Angama Mara occupies the Oloololo Escarpment \u2013 the ridge where Out of Africa was filmed \u2013 across two intimate camps designed by Nicky Fitzgerald, who built over sixty safari properties before this one. Dawn game drives, walking safaris, and hot air balloon rides unfold at your pace. The guiding is exceptional; the views, unforgettable.`,
+          te_briefing: `Angama Mara, Maasai Mara. Two camps of 15 suites + 2 family tents each, perched on the Oloololo Escarpment (Great Rift Valley rim). 10m glass walls, 180-degree views. Out of Africa filming location \u2013 strong storytelling hook. Owner Nicky Fitzgerald: 60+ safari properties across Africa. Expert guiding, game drives, walking safaris, balloon rides, Maasai community visits. Top-tier for safari enthusiasts and couples. Position as \u201cthe definitive Mara experience.\u201d`,
+        },
+        iterations: [{ text: `There are lodges with views, and then there is Angama Mara \u2013 thirty suites suspended from the rim of the Great Rift Valley, each with ten metres of floor-to-ceiling glass opening onto the Mara below. It is the kind of perspective that makes you fall quiet.\n\nThe lodge sits across two intimate camps on the Oloololo Escarpment, the same ridge where Out of Africa was filmed. A third kopje is kept free for sundowners and picnics \u2013 a glass of something cold, the plains turning gold beneath you. Nicky Fitzgerald, who built over sixty safari properties across Africa before this one, designed Angama to feel less like a lodge and more like a home that happens to occupy one of the most extraordinary locations on earth. Polished wood floors, contemporary furnishings, and staff who remember your name by lunch.\n\nYour days unfold at your own pace: dawn game drives tracking big cats through the long grass, walking safaris that bring the smaller details to life, or a hot air balloon ride to see the migration from above. The guiding here is exceptional \u2013 expect real knowledge, not rehearsed commentary.`, flesch_reading_ease: 57.4 }],
+      },
+      sd_private: {
+        input_readability: { flesch_reading_ease: 44.7, flesch_kincaid_grade: 12.3, gunning_fog: 14.8 },
+        input_qualitative: {
+          persuasiveness: { score: 3, rationale: 'Interesting details but presented as a factual list' },
+          sensory_language: { score: 2, rationale: 'Mentions views but lacks immersive sensory language' },
+          emotional_resonance: { score: 2, rationale: 'Facts without emotional connection' },
+          specificity: { score: 5, rationale: 'Excellent specific details' },
+          brand_voice: { score: 2, rationale: 'Informative supplier tone' },
+        },
+        output_text: `Nicky Fitzgerald built over sixty safari properties across Africa before creating one for herself. Angama Mara is the result \u2013 thirty suites suspended from the edge of the Great Rift Valley, each with ten metres of unbroken glass.\n\nTwo intimate camps on the Oloololo Escarpment. A third kopje reserved for sundowners at the Out of Africa filming location. Polished wood, contemporary design, staff who understand the difference between service and intrusion.\n\nWe arrange private game drives at dawn, walking safaris, balloon rides over the migration. The guiding is among the finest in East Africa. For those who know the Mara, this is where it reveals itself differently.`,
+        output_readability: { flesch_reading_ease: 48.2, flesch_kincaid_grade: 9.6, gunning_fog: 11.1 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Creates desire through exclusivity and restraint' },
+          sensory_language: { score: 3, rationale: 'Controlled sensory detail \u2013 glass, wood, dawn' },
+          emotional_resonance: { score: 4, rationale: 'Appeals to the connoisseur who values insider access' },
+          specificity: { score: 5, rationale: 'Nicky Fitzgerald\u2019s credentials lend quiet authority' },
+          brand_voice: { score: 5, rationale: 'Declarative, understated, private \u2013 exactly SD Private' },
+        },
+        channels: {
+          website: `Nicky Fitzgerald built over sixty safari properties across Africa before creating one for herself. Angama Mara is the result \u2013 thirty suites suspended from the edge of the Great Rift Valley, each with ten metres of unbroken glass.\n\nTwo intimate camps on the Oloololo Escarpment. A third kopje reserved for sundowners at the Out of Africa filming location. Polished wood, contemporary design, staff who understand the difference between service and intrusion.\n\nWe arrange private game drives at dawn, walking safaris, balloon rides over the migration. The guiding is among the finest in East Africa. For those who know the Mara, this is where it reveals itself differently.`,
+          instagram: `Sixty lodges across Africa. Then she built one for herself.\n\nAngama Mara. Thirty suites on the rim of the Rift Valley. The Out of Africa ridge. Guiding that needs no script.\n\nSpeak to your Relationship Manager.`,
+          brochure: `Nicky Fitzgerald built over sixty safari properties before creating Angama Mara \u2013 thirty suites suspended from the rim of the Great Rift Valley, each with ten metres of unbroken glass opening onto the Mara. Two intimate camps on the Oloololo Escarpment, the Out of Africa ridge. The guiding is among the finest in East Africa. We arrange the rest.`,
+          te_briefing: `Angama Mara, Maasai Mara. 30 suites across 2 camps + 4 family tents. Oloololo Escarpment \u2013 Rift Valley rim. Owner Nicky Fitzgerald is the draw: 60+ properties across Africa. Out of Africa filming location adds narrative. 10m glass walls, 180-degree views. Top-tier guiding. Suits UHNW guests wanting the definitive Mara experience without the tourist circuit. Position as insider\u2019s Kenya.`,
+        },
+        iterations: [{ text: `Nicky Fitzgerald built over sixty safari properties across Africa before creating one for herself. Angama Mara is the result \u2013 thirty suites suspended from the edge of the Great Rift Valley, each with ten metres of unbroken glass.\n\nTwo intimate camps on the Oloololo Escarpment. A third kopje reserved for sundowners at the Out of Africa filming location. Polished wood, contemporary design, staff who understand the difference between service and intrusion.\n\nWe arrange private game drives at dawn, walking safaris, balloon rides over the migration. The guiding is among the finest in East Africa. For those who know the Mara, this is where it reveals itself differently.`, flesch_reading_ease: 48.2 }],
+      },
+      explorers: {
+        input_readability: { flesch_reading_ease: 44.7, flesch_kincaid_grade: 12.3, gunning_fog: 14.8 },
+        input_qualitative: {
+          persuasiveness: { score: 3, rationale: 'Interesting details but presented as a factual list' },
+          sensory_language: { score: 2, rationale: 'Mentions views but lacks immersive sensory language' },
+          emotional_resonance: { score: 2, rationale: 'Facts without emotional connection' },
+          specificity: { score: 5, rationale: 'Excellent specific details' },
+          brand_voice: { score: 2, rationale: 'Informative supplier tone' },
+        },
+        output_text: `Imagine their faces when the jeep stops and a giraffe crosses right in front of you. That\u2019s a Tuesday morning at Angama Mara \u2013 and the stories they\u2019ll bring back to the Explorers club will keep them buzzing all afternoon.\n\nThe lodge sits on the rim of the Great Rift Valley, with thirty glass-fronted suites looking out over the Mara. There are two family tents in each camp, so the whole family has space to spread out. Game drives head out at dawn in open 4x4s with expert guides who make everything come alive for young eyes \u2013 from dung beetles to big cats.\n\nWalking safaris bring the bush to their level. Hot air balloon rides are the \u201cwow\u201d moment. And the sundowner kopje \u2013 where Out of Africa was filmed \u2013 is where you\u2019ll all sit together, watching the plains turn gold, knowing this is the kind of trip they\u2019ll talk about for years.`,
+        output_readability: { flesch_reading_ease: 68.9, flesch_kincaid_grade: 7.8, gunning_fog: 9.6 },
+        output_qualitative: {
+          persuasiveness: { score: 5, rationale: 'Irresistible for parents \u2013 paints the family safari dream vividly' },
+          sensory_language: { score: 4, rationale: 'Strong imagery \u2013 giraffe crossing, plains turning gold, buzzing kids' },
+          emotional_resonance: { score: 5, rationale: 'The \u201cstories they\u2019ll tell for years\u201d hook is deeply resonant for parents' },
+          specificity: { score: 4, rationale: 'Family tents, expert guides, age-appropriate activities all mentioned' },
+          brand_voice: { score: 5, rationale: 'Warm, family-focused, practical yet aspirational \u2013 pure Explorers' },
+        },
+        channels: {
+          website: `Imagine their faces when the jeep stops and a giraffe crosses right in front of you. That\u2019s a Tuesday morning at Angama Mara \u2013 and the stories they\u2019ll bring back to the Explorers club will keep them buzzing all afternoon.\n\nThe lodge sits on the rim of the Great Rift Valley, with thirty glass-fronted suites looking out over the Mara. There are two family tents in each camp, so the whole family has space to spread out. Game drives head out at dawn in open 4x4s with expert guides who make everything come alive for young eyes \u2013 from dung beetles to big cats.\n\nWalking safaris bring the bush to their level. Hot air balloon rides are the \u201cwow\u201d moment. And the sundowner kopje \u2013 where Out of Africa was filmed \u2013 is where you\u2019ll all sit together, watching the plains turn gold, knowing this is the kind of trip they\u2019ll talk about for years.`,
+          instagram: `The look on their face when a giraffe crosses right in front of the jeep. You can\u2019t buy that. \uD83E\uDD92\n\nAngama Mara \u2013 family tents on the rim of the Rift Valley, expert guides who make the bush come alive for little eyes, and sundowners on the Out of Africa kopje.\n\nThe family safari they\u2019ll talk about for years.\n\nLink in bio for Explorers safaris.`,
+          brochure: `Thirty glass-fronted suites on the rim of the Great Rift Valley, with family tents designed for spreading out. Angama Mara\u2019s expert guides bring the bush to life for young explorers \u2013 from dung beetles to big cats. Dawn game drives, walking safaris, and hot air balloon rides create the stories they\u2019ll tell for years. Sundowners on the Out of Africa kopje are for the whole family.`,
+          te_briefing: `Angama Mara, Maasai Mara. 30 suites + 4 family tents (2 per camp). Great Rift Valley escarpment. Excellent for Explorers families: expert child-friendly guiding, family tents with space, age-appropriate safari activities. Hot air balloon rides as \u201cwow\u201d moment. Out of Africa filming location adds storytelling value. Position as \u201cthe family safari benchmark\u201d \u2013 the guides make or break a family safari, and these are among the best.`,
+        },
+        iterations: [{ text: `Imagine their faces when the jeep stops and a giraffe crosses right in front of you. That\u2019s a Tuesday morning at Angama Mara \u2013 and the stories they\u2019ll bring back to the Explorers club will keep them buzzing all afternoon.\n\nThe lodge sits on the rim of the Great Rift Valley, with thirty glass-fronted suites looking out over the Mara. There are two family tents in each camp, so the whole family has space to spread out. Game drives head out at dawn in open 4x4s with expert guides who make everything come alive for young eyes \u2013 from dung beetles to big cats.\n\nWalking safaris bring the bush to their level. Hot air balloon rides are the \u201cwow\u201d moment. And the sundowner kopje \u2013 where Out of Africa was filmed \u2013 is where you\u2019ll all sit together, watching the plains turn gold, knowing this is the kind of trip they\u2019ll talk about for years.`, flesch_reading_ease: 68.9 }],
+      },
+      black_tomato: {
+        input_readability: { flesch_reading_ease: 44.7, flesch_kincaid_grade: 12.3, gunning_fog: 14.8 },
+        input_qualitative: {
+          persuasiveness: { score: 3, rationale: 'Interesting details but presented as a factual list' },
+          sensory_language: { score: 2, rationale: 'Mentions views but lacks immersive sensory language' },
+          emotional_resonance: { score: 2, rationale: 'Facts without emotional connection' },
+          specificity: { score: 5, rationale: 'Excellent specific details' },
+          brand_voice: { score: 2, rationale: 'Informative supplier tone' },
+        },
+        output_text: `How do you want to feel? Because Angama Mara isn\u2019t really about the lodge. It\u2019s about the moment you stop talking.\n\nThirty suites on the rim of the Great Rift Valley, ten metres of glass between you and the Mara. The same ridge where Out of Africa was filmed. You already know the facts. What you don\u2019t know \u2013 can\u2019t know until you\u2019re there \u2013 is what the silence does to you.\n\nNicky Fitzgerald built over sixty safari properties across Africa before creating this one. She didn\u2019t build a lodge. She built a feeling. Two intimate camps. A kopje reserved for sundowners. Guides who don\u2019t recite \u2013 they reveal. Dawn game drives, walking safaris, balloon rides over the migration. But those are the what. The why is harder to describe. It\u2019s the restlessness that brought you here, and the stillness that makes you stay.\n\nThat\u2019s rare. That\u2019s remarkable. That\u2019s the point.`,
+        output_readability: { flesch_reading_ease: 68.5, flesch_kincaid_grade: 6.9, gunning_fog: 8.7 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Philosophically engaging \u2013 reframes safari through inner experience' },
+          sensory_language: { score: 2, rationale: 'Deliberately sparse on sensory detail \u2013 prioritises emotion over sensation' },
+          emotional_resonance: { score: 5, rationale: 'Deep emotional framing \u2013 silence, restlessness, stillness' },
+          specificity: { score: 3, rationale: 'Facts present but subordinated to philosophical narrative' },
+          brand_voice: { score: 5, rationale: 'Unmistakably competitor voice \u2013 "rare and remarkable", "how do you want to feel"' },
+        },
+        channels: {
+          website: `How do you want to feel? Because Angama Mara isn\u2019t really about the lodge. It\u2019s about the moment you stop talking.\n\nThirty suites on the rim of the Great Rift Valley, ten metres of glass between you and the Mara. The same ridge where Out of Africa was filmed. You already know the facts. What you don\u2019t know \u2013 can\u2019t know until you\u2019re there \u2013 is what the silence does to you.\n\nNicky Fitzgerald built over sixty safari properties across Africa before creating this one. She didn\u2019t build a lodge. She built a feeling. Two intimate camps. A kopje reserved for sundowners. Guides who don\u2019t recite \u2013 they reveal. Dawn game drives, walking safaris, balloon rides over the migration. But those are the what. The why is harder to describe. It\u2019s the restlessness that brought you here, and the stillness that makes you stay.\n\nThat\u2019s rare. That\u2019s remarkable. That\u2019s the point.`,
+          instagram: `It\u2019s not about the view. It\u2019s about the silence.\n\nAngama Mara. Thirty suites on the rim of the Rift Valley. The ridge where Out of Africa was filmed. Guides who reveal, not recite.\n\nHow do you want to feel? Let\u2019s begin.`,
+          brochure: `How do you want to feel? Angama Mara sits on the rim of the Great Rift Valley \u2013 thirty suites, ten metres of glass, the Mara spreading beneath you. Nicky Fitzgerald built over sixty safari properties before creating this one. She didn\u2019t build a lodge. She built a feeling. That\u2019s rare. That\u2019s remarkable.`,
+          te_briefing: `Angama Mara, Maasai Mara. 30 suites + 4 family tents across 2 camps. Rift Valley escarpment. Competitor approach: philosophical framing \u2013 "how do you want to feel" over sensory detail. Nicky Fitzgerald (60+ properties) used as credibility hook but framed emotionally. "Rare and remarkable" signature. Weaker on specifics than SD but stronger on emotional resonance. Out of Africa hook underused vs SD version.`,
+        },
+        iterations: [{ text: `How do you want to feel? Because Angama Mara isn\u2019t really about the lodge. It\u2019s about the moment you stop talking.\n\nThirty suites on the rim of the Great Rift Valley, ten metres of glass between you and the Mara. The same ridge where Out of Africa was filmed. You already know the facts. What you don\u2019t know \u2013 can\u2019t know until you\u2019re there \u2013 is what the silence does to you.\n\nNicky Fitzgerald built over sixty safari properties across Africa before creating this one. She didn\u2019t build a lodge. She built a feeling. Two intimate camps. A kopje reserved for sundowners. Guides who don\u2019t recite \u2013 they reveal. Dawn game drives, walking safaris, balloon rides over the migration. But those are the what. The why is harder to describe. It\u2019s the restlessness that brought you here, and the stillness that makes you stay.\n\nThat\u2019s rare. That\u2019s remarkable. That\u2019s the point.`, flesch_reading_ease: 68.5 }],
+      },
     },
   },
   {
@@ -101,46 +231,111 @@ Your days unfold at your own pace: dawn game drives tracking big cats through th
     label: 'Beach',
     name: 'Soneva Jani, Maldives',
     input_text: `Soneva Jani is a luxury resort located in the Noonu Atoll in the Maldives. The resort is comprised of spacious overwater and island villas offering private and secluded experiences. The majority of villas are over-water with direct access to the lagoon. Villas feature contemporary design and modern furnishings with several areas for lounging and dining. The standout feature is the retractable roof over the master bedroom for stargazing. There is a private pool and a slide from the upper floor into the lagoon. The resort offers dining experiences, spa treatments, and water sports. Soneva Jani is built using sustainable materials and is committed to environmental preservation. From Male it is a 40-minute scenic seaplane flight to Medhufaru island. The resort has an ice cream room and a chocolate room. Guests can visit the observatory for stargazing with an in-house astronomer.`,
-    response: {
-      input_readability: {
-        flesch_reading_ease: 46.1,
-        flesch_kincaid_grade: 11.9,
-        gunning_fog: 14.2,
-      },
-      input_qualitative: {
-        persuasiveness: { score: 2, rationale: 'Lists features without creating desire or urgency' },
-        sensory_language: { score: 1, rationale: 'No sensory detail - purely factual description' },
-        emotional_resonance: { score: 1, rationale: 'No emotional connection to the guest experience' },
-        specificity: { score: 4, rationale: 'Good concrete details about features and travel logistics' },
-        brand_voice: { score: 1, rationale: 'Generic resort brochure language, not luxury editorial' },
-      },
-      output_text: `The seaplane descent into Noonu Atoll is your first clue that Soneva Jani operates on a different frequency. Forty minutes from Mal\u00e9, the lagoon below shifts through impossible blues before you touch down on Medhufaru \u2013 and everything slows.
-
-Your villa hovers above water so clear you can watch reef fish from the bathroom. The design is clean and contemporary, all natural materials and considered space, with a private pool, outdoor decks for every mood, and that slide \u2013 yes, a slide \u2013 dropping you straight from the upper floor into the lagoon below. But the detail that stays with you is simpler: lying in bed as the retractable roof draws back overhead, revealing a sky so thick with stars it barely looks real. The in-house astronomer will tell you exactly what you are looking at.
-
-Days here have no fixed shape. Snorkel the house reef before breakfast, graze through the ice cream and chocolate rooms mid-afternoon, and let the spa set the pace for everything between. Soneva pioneered barefoot luxury before the phrase existed \u2013 you will feel it in every unforced, unhurried moment.`,
-      output_readability: {
-        flesch_reading_ease: 62.8,
-        flesch_kincaid_grade: 8.7,
-        gunning_fog: 10.5,
-      },
-      output_qualitative: {
-        persuasiveness: { score: 5, rationale: 'Irresistible - you want to book before you finish reading' },
-        sensory_language: { score: 5, rationale: 'Extraordinary sensory detail - impossible blues, stars overhead, reef fish' },
-        emotional_resonance: { score: 5, rationale: 'Captures the feeling of time stopping and total immersion' },
-        specificity: { score: 4, rationale: 'All features woven naturally into narrative with vivid detail' },
-        brand_voice: { score: 5, rationale: 'Peak luxury editorial - confident, understated, knowing' },
-      },
-      iterations: [
-        {
-          text: `The seaplane descent into Noonu Atoll is your first clue that Soneva Jani operates on a different frequency. Forty minutes from Mal\u00e9, the lagoon below shifts through impossible blues before you touch down on Medhufaru \u2013 and everything slows.
-
-Your villa hovers above water so clear you can watch reef fish from the bathroom. The design is clean and contemporary, all natural materials and considered space, with a private pool, outdoor decks for every mood, and that slide \u2013 yes, a slide \u2013 dropping you straight from the upper floor into the lagoon below. But the detail that stays with you is simpler: lying in bed as the retractable roof draws back overhead, revealing a sky so thick with stars it barely looks real. The in-house astronomer will tell you exactly what you are looking at.
-
-Days here have no fixed shape. Snorkel the house reef before breakfast, graze through the ice cream and chocolate rooms mid-afternoon, and let the spa set the pace for everything between. Soneva pioneered barefoot luxury before the phrase existed \u2013 you will feel it in every unforced, unhurried moment.`,
-          flesch_reading_ease: 62.8,
+    responses: {
+      scott_dunn: {
+        input_readability: { flesch_reading_ease: 46.1, flesch_kincaid_grade: 11.9, gunning_fog: 14.2 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Lists features without creating desire' },
+          sensory_language: { score: 1, rationale: 'No sensory detail \u2013 purely factual description' },
+          emotional_resonance: { score: 1, rationale: 'No emotional connection to the guest experience' },
+          specificity: { score: 4, rationale: 'Good concrete details about features and logistics' },
+          brand_voice: { score: 1, rationale: 'Generic resort brochure language' },
         },
-      ],
+        output_text: `The seaplane descent into Noonu Atoll is your first clue that Soneva Jani operates on a different frequency. Forty minutes from Mal\u00e9, the lagoon below shifts through impossible blues before you touch down on Medhufaru \u2013 and everything slows.\n\nYour villa hovers above water so clear you can watch reef fish from the bathroom. The design is clean and contemporary, all natural materials and considered space, with a private pool, outdoor decks for every mood, and that slide \u2013 yes, a slide \u2013 dropping you straight from the upper floor into the lagoon below. But the detail that stays with you is simpler: lying in bed as the retractable roof draws back overhead, revealing a sky so thick with stars it barely looks real. The in-house astronomer will tell you exactly what you are looking at.\n\nDays here have no fixed shape. Snorkel the house reef before breakfast, graze through the ice cream and chocolate rooms mid-afternoon, and let the spa set the pace for everything between. Soneva pioneered barefoot luxury before the phrase existed \u2013 you will feel it in every unforced, unhurried moment.`,
+        output_readability: { flesch_reading_ease: 62.8, flesch_kincaid_grade: 8.7, gunning_fog: 10.5 },
+        output_qualitative: {
+          persuasiveness: { score: 5, rationale: 'Irresistible \u2013 you want to book before you finish reading' },
+          sensory_language: { score: 5, rationale: 'Extraordinary sensory detail \u2013 impossible blues, stars overhead, reef fish' },
+          emotional_resonance: { score: 5, rationale: 'Captures the feeling of time stopping and total immersion' },
+          specificity: { score: 4, rationale: 'All features woven naturally into narrative' },
+          brand_voice: { score: 5, rationale: 'Peak luxury editorial \u2013 confident, understated, knowing' },
+        },
+        channels: {
+          website: `The seaplane descent into Noonu Atoll is your first clue that Soneva Jani operates on a different frequency. Forty minutes from Mal\u00e9, the lagoon below shifts through impossible blues before you touch down on Medhufaru \u2013 and everything slows.\n\nYour villa hovers above water so clear you can watch reef fish from the bathroom. The design is clean and contemporary, all natural materials and considered space, with a private pool, outdoor decks for every mood, and that slide \u2013 yes, a slide \u2013 dropping you straight from the upper floor into the lagoon below. But the detail that stays with you is simpler: lying in bed as the retractable roof draws back overhead, revealing a sky so thick with stars it barely looks real. The in-house astronomer will tell you exactly what you are looking at.\n\nDays here have no fixed shape. Snorkel the house reef before breakfast, graze through the ice cream and chocolate rooms mid-afternoon, and let the spa set the pace for everything between. Soneva pioneered barefoot luxury before the phrase existed \u2013 you will feel it in every unforced, unhurried moment.`,
+          instagram: `That moment when the retractable roof slides open and you realise you\u2019re lying under a million stars, above water so clear you can see the reef from bed.\n\nSoneva Jani. A seaplane, a slide into the lagoon, and an astronomer who knows every constellation. \u2728\n\nThis is barefoot luxury before the phrase existed.\n\nLink in bio to plan your escape.`,
+          brochure: `Forty minutes by seaplane from Mal\u00e9, Soneva Jani rises from the lagoon of Noonu Atoll. Overwater villas of contemporary design and natural materials offer private pools, open decks, and a retractable roof above the master bed for stargazing with the in-house astronomer. Days take their own shape: reef snorkelling at dawn, the ice cream room at noon, the spa whenever the mood takes you. This is the resort that defined barefoot luxury.`,
+          te_briefing: `Soneva Jani, Noonu Atoll, Maldives. Overwater + island villas. 40min seaplane from Mal\u00e9. Key USP: retractable roof for stargazing + in-house astronomer. Private pools, water slides into lagoon. Sustainable build, natural materials. Ice cream and chocolate rooms \u2013 quirky touch that delights. Strong for couples and honeymooners. Mention the barefoot luxury positioning \u2013 no shoes required anywhere. Pioneering Soneva brand credibility.`,
+        },
+        iterations: [{ text: `The seaplane descent into Noonu Atoll is your first clue that Soneva Jani operates on a different frequency. Forty minutes from Mal\u00e9, the lagoon below shifts through impossible blues before you touch down on Medhufaru \u2013 and everything slows.\n\nYour villa hovers above water so clear you can watch reef fish from the bathroom. The design is clean and contemporary, all natural materials and considered space, with a private pool, outdoor decks for every mood, and that slide \u2013 yes, a slide \u2013 dropping you straight from the upper floor into the lagoon below. But the detail that stays with you is simpler: lying in bed as the retractable roof draws back overhead, revealing a sky so thick with stars it barely looks real. The in-house astronomer will tell you exactly what you are looking at.\n\nDays here have no fixed shape. Snorkel the house reef before breakfast, graze through the ice cream and chocolate rooms mid-afternoon, and let the spa set the pace for everything between. Soneva pioneered barefoot luxury before the phrase existed \u2013 you will feel it in every unforced, unhurried moment.`, flesch_reading_ease: 62.8 }],
+      },
+      sd_private: {
+        input_readability: { flesch_reading_ease: 46.1, flesch_kincaid_grade: 11.9, gunning_fog: 14.2 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Lists features without creating desire' },
+          sensory_language: { score: 1, rationale: 'No sensory detail' },
+          emotional_resonance: { score: 1, rationale: 'No emotional connection' },
+          specificity: { score: 4, rationale: 'Good concrete details' },
+          brand_voice: { score: 1, rationale: 'Generic resort brochure language' },
+        },
+        output_text: `A seaplane over the atoll. The retractable roof draws back. This is not a hotel stay. This is Soneva Jani, arranged on your terms.\n\nForty minutes from Mal\u00e9, overwater villas of natural materials and contemporary design sit above a lagoon so clear the reef is visible from every room. Private pools. A slide into the water. An astronomer on staff who knows your villa\u2019s sky by heart.\n\nWe handle the details: the dining, the spa, the ice cream and chocolate rooms that have become quietly legendary. Soneva built its reputation on sustainable luxury long before it became fashionable. The result is a resort that feels both effortless and intentional.\n\nFor those who already know the Maldives, this is where it begins again.`,
+        output_readability: { flesch_reading_ease: 54.3, flesch_kincaid_grade: 8.1, gunning_fog: 9.8 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Creates desire through quiet exclusivity and access' },
+          sensory_language: { score: 3, rationale: 'Restrained but effective \u2013 clear lagoon, stars, natural materials' },
+          emotional_resonance: { score: 4, rationale: 'Speaks to the traveller who has seen everything and wants something different' },
+          specificity: { score: 4, rationale: 'Key details stated with authority, not embellished' },
+          brand_voice: { score: 5, rationale: 'Short declarative sentences, quiet confidence, \u201cwe handle\u201d positioning' },
+        },
+        channels: {
+          website: `A seaplane over the atoll. The retractable roof draws back. This is not a hotel stay. This is Soneva Jani, arranged on your terms.\n\nForty minutes from Mal\u00e9, overwater villas of natural materials and contemporary design sit above a lagoon so clear the reef is visible from every room. Private pools. A slide into the water. An astronomer on staff who knows your villa\u2019s sky by heart.\n\nWe handle the details: the dining, the spa, the ice cream and chocolate rooms that have become quietly legendary. Soneva built its reputation on sustainable luxury long before it became fashionable. The result is a resort that feels both effortless and intentional.\n\nFor those who already know the Maldives, this is where it begins again.`,
+          instagram: `A seaplane. A retractable roof. A sky that needs no filter.\n\nSoneva Jani. Arranged on your terms.\n\nSpeak to your Relationship Manager.`,
+          brochure: `A seaplane descent into Noonu Atoll. Overwater villas of natural materials above a lagoon so clear the reef is visible from bed. The retractable roof reveals a sky the in-house astronomer knows by heart. Private pools, a slide into the water, and the quietly legendary ice cream and chocolate rooms. Soneva Jani is sustainable luxury before it became a phrase. We arrange the rest.`,
+          te_briefing: `Soneva Jani, Noonu Atoll. 40min seaplane from Mal\u00e9. Overwater and island villas, natural materials, contemporary design. USP: retractable roof stargazing with in-house astronomer. Private pools, lagoon slides. Sustainable credentials strong. Ice cream/chocolate rooms \u2013 signature Soneva touch. For UHNW guests who\u2019ve done standard Maldives and want the next level. Position as \u201cwhere the Maldives begins again.\u201d Soneva brand carries weight.`,
+        },
+        iterations: [{ text: `A seaplane over the atoll. The retractable roof draws back. This is not a hotel stay. This is Soneva Jani, arranged on your terms.\n\nForty minutes from Mal\u00e9, overwater villas of natural materials and contemporary design sit above a lagoon so clear the reef is visible from every room. Private pools. A slide into the water. An astronomer on staff who knows your villa\u2019s sky by heart.\n\nWe handle the details: the dining, the spa, the ice cream and chocolate rooms that have become quietly legendary. Soneva built its reputation on sustainable luxury long before it became fashionable. The result is a resort that feels both effortless and intentional.\n\nFor those who already know the Maldives, this is where it begins again.`, flesch_reading_ease: 54.3 }],
+      },
+      explorers: {
+        input_readability: { flesch_reading_ease: 46.1, flesch_kincaid_grade: 11.9, gunning_fog: 14.2 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Lists features without creating desire' },
+          sensory_language: { score: 1, rationale: 'No sensory detail' },
+          emotional_resonance: { score: 1, rationale: 'No emotional connection' },
+          specificity: { score: 4, rationale: 'Good concrete details' },
+          brand_voice: { score: 1, rationale: 'Generic resort brochure language' },
+        },
+        output_text: `The seaplane is just the start of the adventure. Forty minutes from Mal\u00e9, the kids will be glued to the window as the lagoon turns every shade of blue \u2013 and when they spot the water slide from the villa into the sea, you\u2019ll know the holiday has officially begun.\n\nSoneva Jani\u2019s overwater villas give everyone space to breathe: private pools for quiet moments, decks for family meals at sunset, and yes, that slide is as fun as it looks. At bedtime, the retractable roof opens above the master bedroom and the in-house astronomer joins you to map the stars. Even the teenagers will put their phones down for this.\n\nDays here are beautifully unstructured. Snorkelling before breakfast, the ice cream room whenever the mood strikes, and the chocolate room for the afternoon slump. The kids will be happily busy while you find the spa \u2013 and find it hard to leave.`,
+        output_readability: { flesch_reading_ease: 72.1, flesch_kincaid_grade: 7.1, gunning_fog: 8.9 },
+        output_qualitative: {
+          persuasiveness: { score: 5, rationale: 'Irresistible for families \u2013 the slide and astronomer seal the deal' },
+          sensory_language: { score: 4, rationale: 'Strong visual detail \u2013 shades of blue, stargazing, sunset decks' },
+          emotional_resonance: { score: 5, rationale: 'Captures family joy and the relief of unstructured togetherness' },
+          specificity: { score: 4, rationale: 'Family-relevant details foregrounded naturally' },
+          brand_voice: { score: 5, rationale: 'Warm, practical, parent-focused \u2013 Explorers through and through' },
+        },
+        channels: {
+          website: `The seaplane is just the start of the adventure. Forty minutes from Mal\u00e9, the kids will be glued to the window as the lagoon turns every shade of blue \u2013 and when they spot the water slide from the villa into the sea, you\u2019ll know the holiday has officially begun.\n\nSoneva Jani\u2019s overwater villas give everyone space to breathe: private pools for quiet moments, decks for family meals at sunset, and yes, that slide is as fun as it looks. At bedtime, the retractable roof opens above the master bedroom and the in-house astronomer joins you to map the stars. Even the teenagers will put their phones down for this.\n\nDays here are beautifully unstructured. Snorkelling before breakfast, the ice cream room whenever the mood strikes, and the chocolate room for the afternoon slump. The kids will be happily busy while you find the spa \u2013 and find it hard to leave.`,
+          instagram: `When they spot the slide from the villa into the lagoon, the holiday officially starts. \uD83C\uDF0A\n\nSoneva Jani: overwater villas, a retractable roof for stargazing (yes, with an actual astronomer), an ice cream room with no closing time, and a chocolate room for the afternoon slump.\n\nFamily holidays don\u2019t get better than this.\n\nLink in bio for Explorers beach holidays.`,
+          brochure: `Forty minutes by seaplane from Mal\u00e9, Soneva Jani\u2019s overwater villas offer families space and wonder in equal measure. Private pools, sunset decks, and a water slide into the lagoon for the brave. The retractable roof above the master bedroom reveals a sky the in-house astronomer brings to life. Unstructured days of snorkelling, ice cream rooms, and spa escapes \u2013 this is the family beach holiday at its finest.`,
+          te_briefing: `Soneva Jani, Noonu Atoll. Excellent for Explorers families. Key family features: villa slides into lagoon (kids love it), retractable roof stargazing with astronomer (teens engage), ice cream and chocolate rooms. Overwater villas with space for families. 40min seaplane from Mal\u00e9 \u2013 the journey itself is an experience for kids. Spa for parent downtime. Position as \u201cthe family Maldives experience they\u2019ll talk about for years.\u201d`,
+        },
+        iterations: [{ text: `The seaplane is just the start of the adventure. Forty minutes from Mal\u00e9, the kids will be glued to the window as the lagoon turns every shade of blue \u2013 and when they spot the water slide from the villa into the sea, you\u2019ll know the holiday has officially begun.\n\nSoneva Jani\u2019s overwater villas give everyone space to breathe: private pools for quiet moments, decks for family meals at sunset, and yes, that slide is as fun as it looks. At bedtime, the retractable roof opens above the master bedroom and the in-house astronomer joins you to map the stars. Even the teenagers will put their phones down for this.\n\nDays here are beautifully unstructured. Snorkelling before breakfast, the ice cream room whenever the mood strikes, and the chocolate room for the afternoon slump. The kids will be happily busy while you find the spa \u2013 and find it hard to leave.`, flesch_reading_ease: 72.1 }],
+      },
+      black_tomato: {
+        input_readability: { flesch_reading_ease: 46.1, flesch_kincaid_grade: 11.9, gunning_fog: 14.2 },
+        input_qualitative: {
+          persuasiveness: { score: 2, rationale: 'Lists features without creating desire' },
+          sensory_language: { score: 1, rationale: 'No sensory detail' },
+          emotional_resonance: { score: 1, rationale: 'No emotional connection' },
+          specificity: { score: 4, rationale: 'Good concrete details' },
+          brand_voice: { score: 1, rationale: 'Generic resort brochure language' },
+        },
+        output_text: `You don\u2019t go to Soneva Jani. You arrive at a feeling.\n\nForty minutes by seaplane from Mal\u00e9. The lagoon turns impossible colours beneath you. Then the roof of your villa opens, and you\u2019re lying in bed looking at stars you didn\u2019t know existed. An astronomer tells you their names. That\u2019s the kind of place this is \u2013 a place that takes something you thought you knew and makes it remarkable.\n\nPrivate pools. A slide into the lagoon. Ice cream and chocolate rooms that sound indulgent and are. Sustainable materials and considered design throughout. But Soneva doesn\u2019t lead with any of that, and neither should you. The point isn\u2019t the amenities. The point is the way time stops.\n\nThis is not a Maldives holiday. This is a recalibration. A tailor-made pause from the restless world, shaped around how you want to feel \u2013 not where you want to go.\n\nLet\u2019s begin.`,
+        output_readability: { flesch_reading_ease: 69.7, flesch_kincaid_grade: 6.5, gunning_fog: 8.2 },
+        output_qualitative: {
+          persuasiveness: { score: 4, rationale: 'Reframes the resort as an inner experience \u2013 compelling for the right audience' },
+          sensory_language: { score: 2, rationale: 'Deliberately minimal sensory detail \u2013 relies on emotional abstraction' },
+          emotional_resonance: { score: 5, rationale: 'Powerful emotional hook \u2013 "recalibration", "time stops", "feeling over destination"' },
+          specificity: { score: 2, rationale: 'Facts present but heavily subordinated to philosophical framing' },
+          brand_voice: { score: 5, rationale: 'Signature competitor voice throughout \u2013 "rare and remarkable", "let\u2019s begin", "tailor-made"' },
+        },
+        channels: {
+          website: `You don\u2019t go to Soneva Jani. You arrive at a feeling.\n\nForty minutes by seaplane from Mal\u00e9. The lagoon turns impossible colours beneath you. Then the roof of your villa opens, and you\u2019re lying in bed looking at stars you didn\u2019t know existed. An astronomer tells you their names. That\u2019s the kind of place this is \u2013 a place that takes something you thought you knew and makes it remarkable.\n\nPrivate pools. A slide into the lagoon. Ice cream and chocolate rooms that sound indulgent and are. Sustainable materials and considered design throughout. But Soneva doesn\u2019t lead with any of that, and neither should you. The point isn\u2019t the amenities. The point is the way time stops.\n\nThis is not a Maldives holiday. This is a recalibration. A tailor-made pause from the restless world, shaped around how you want to feel \u2013 not where you want to go.\n\nLet\u2019s begin.`,
+          instagram: `You don\u2019t go to Soneva Jani. You arrive at a feeling.\n\nA retractable roof. An astronomer. Stars you didn\u2019t know existed. This is not a Maldives holiday. This is a recalibration.\n\nHow do you want to feel? Let\u2019s begin.`,
+          brochure: `You don\u2019t go to Soneva Jani. You arrive at a feeling. Forty minutes by seaplane from Mal\u00e9, the roof opens above your bed, and an astronomer names the stars. Private pools, a slide into the lagoon, sustainable materials throughout. But the point isn\u2019t the amenities. The point is the way time stops. A tailor-made recalibration. Rare and remarkable.`,
+          te_briefing: `Soneva Jani, Noonu Atoll. Competitor positioning: pure emotion-led framing \u2013 "arrive at a feeling", "recalibration", "time stops." Deliberately minimal on sensory detail, heavy on philosophical narrative. Signature phrases: "rare and remarkable", "how you want to feel", "let\u2019s begin." Retractable roof + astronomer used as emotional hook, not feature. Strong on emotional resonance but notably lighter on specificity than SD \u2013 the expert details are missing.`,
+        },
+        iterations: [{ text: `You don\u2019t go to Soneva Jani. You arrive at a feeling.\n\nForty minutes by seaplane from Mal\u00e9. The lagoon turns impossible colours beneath you. Then the roof of your villa opens, and you\u2019re lying in bed looking at stars you didn\u2019t know existed. An astronomer tells you their names. That\u2019s the kind of place this is \u2013 a place that takes something you thought you knew and makes it remarkable.\n\nPrivate pools. A slide into the lagoon. Ice cream and chocolate rooms that sound indulgent and are. Sustainable materials and considered design throughout. But Soneva doesn\u2019t lead with any of that, and neither should you. The point isn\u2019t the amenities. The point is the way time stops.\n\nThis is not a Maldives holiday. This is a recalibration. A tailor-made pause from the restless world, shaped around how you want to feel \u2013 not where you want to go.\n\nLet\u2019s begin.`, flesch_reading_ease: 69.7 }],
+      },
     },
   },
 ]

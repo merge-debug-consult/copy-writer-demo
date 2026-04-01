@@ -6,4 +6,10 @@ export const DIMENSIONS = [
   { key: 'brand_voice', label: 'Brand Voice', desc: 'Does it sound like a premium expert curator?' },
 ]
 
-export const TARGET_RANGE = { min: 50, max: 65 }
+export const ALIGNMENT_DIMENSIONS = [
+  { key: 'visual_match', label: 'Visual Match', desc: 'Does the image show what the text describes?' },
+  { key: 'mood_alignment', label: 'Mood Alignment', desc: "Does the image's atmosphere match the text's tone?" },
+  { key: 'hero_feature', label: 'Hero Feature', desc: "Does the image highlight the property's key selling point?" },
+  { key: 'audience_fit', label: 'Audience Fit', desc: 'Would this image appeal to the target reader?' },
+  { key: 'scroll_stopping', label: 'Scroll-Stopping', desc: 'Is this image compelling enough to make someone pause?' },
+]

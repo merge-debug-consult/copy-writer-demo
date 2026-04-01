@@ -1,11 +1,22 @@
-import { DIMENSIONS, TARGET_RANGE } from '../data/dimensions.js'
+import { DIMENSIONS } from '../data/dimensions.js'
+import { BRAND_PRESETS, getTargetRange } from '../data/voiceProfiles.js'
 
-const TONES = ['Aspirational', 'Sensory', 'Expert-led', 'Second person']
+const VOICE_TONE_TAGS = {
+  scott_dunn: ['Aspirational', 'Sensory', 'Expert-led', 'Second person'],
+  sd_private: ['Understated', 'Discreet', 'Declarative', 'First person plural'],
+  explorers: ['Joyful', 'Reassuring', 'Energetic', 'Parent-focused'],
+  black_tomato: ['Philosophical', 'Emotion-led', 'Punchy', 'Curious'],
+}
 
-export default function VoiceGuide() {
+export default function VoiceGuide({ style, activePreset }) {
+  const targetRange = getTargetRange(style)
+  const preset = BRAND_PRESETS.find((bp) => bp.key === activePreset)
+  const toneTags = VOICE_TONE_TAGS[activePreset] || ['Custom configuration']
+  const label = preset ? preset.label : 'Custom Voice'
+
   return (
     <div className="card voice-guide">
-      <h3>SD Voice Guide</h3>
+      <h3>{label} Voice Guide</h3>
 
       {DIMENSIONS.map((c) => (
         <div key={c.key} className="guide-item">
@@ -16,12 +27,12 @@ export default function VoiceGuide() {
 
       <div className="guide-target">
         <div className="target-label">Target Readability</div>
-        <div className="target-value">{TARGET_RANGE.min} &ndash; {TARGET_RANGE.max}</div>
+        <div className="target-value">{targetRange.min} &ndash; {targetRange.max}</div>
         <div className="target-desc">Flesch Reading Ease</div>
       </div>
 
       <div className="tone-tags">
-        {TONES.map((t) => (
+        {toneTags.map((t) => (
           <span key={t} className="tone-tag">{t}</span>
         ))}
       </div>

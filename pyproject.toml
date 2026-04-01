@@ -9,6 +9,7 @@ dependencies = [
     "pydantic-ai>=1.70.0",
     "textstat>=0.7.4",
     "python-dotenv>=1.0.0",
+    "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]

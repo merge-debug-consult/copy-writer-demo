@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { TARGET_RANGE } from '../data/dimensions.js'
 
-export default function IterationHistory({ iterations }) {
+export default function IterationHistory({ iterations, targetRange = { min: 50, max: 65 } }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -13,7 +12,7 @@ export default function IterationHistory({ iterations }) {
       {open && (
         <div className="iteration-list">
           {iterations.map((iter, i) => {
-            const inRange = iter.flesch_reading_ease >= TARGET_RANGE.min && iter.flesch_reading_ease <= TARGET_RANGE.max
+            const inRange = iter.flesch_reading_ease >= targetRange.min && iter.flesch_reading_ease <= targetRange.max
             return (
               <div key={i} className="iteration-item">
                 <div className="iter-header">

@@ -1,24 +1,31 @@
-import { TARGET_RANGE } from '../data/dimensions.js'
-
-function getGaugeColour(score) {
+function getGaugeColour(score, targetRange) {
   if (score < 40) return 'red'
-  if (score < TARGET_RANGE.min) return 'amber'
-  if (score <= TARGET_RANGE.max) return 'green'
+  if (score < targetRange.min) return 'amber'
+  if (score <= targetRange.max) return 'green'
   if (score <= 75) return 'amber'
   return 'red'
 }
 
-function getGradeLabel(grade) {
-  if (grade <= 6) return 'Very easy'
-  if (grade <= 8) return 'Easy reading'
-  if (grade <= 10) return 'Accessible sophistication'
-  if (grade <= 12) return 'Academic'
-  return 'Postgraduate'
+function getFreLabel(score) {
+  if (score < 30) return 'Very difficult — academic journals, legal text'
+  if (score < 40) return 'Difficult — specialist or technical writing'
+  if (score < 50) return 'Fairly difficult — quality broadsheet prose'
+  if (score < 60) return 'Standard — the sweet spot for luxury editorial'
+  if (score < 70) return 'Fairly easy — conversational, accessible'
+  if (score < 80) return 'Easy — mass-market consumer copy'
+  return 'Very easy — simple, short sentences'
 }
 
-export default function ReadabilityGauge({ readability }) {
+const SCALE_BANDS = [
+  { label: '0-30', desc: 'Academic', colour: '#e74c3c', width: '30%' },
+  { label: '30-50', desc: 'Complex', colour: '#f39c12', width: '20%' },
+  { label: '50-70', desc: 'Editorial', colour: '#00402E', width: '20%' },
+  { label: '70-100', desc: 'Simple', colour: '#f39c12', width: '30%' },
+]
+
+export default function ReadabilityGauge({ readability, targetRange = { min: 50, max: 65 } }) {
   const fre = readability.flesch_reading_ease
-  const colour = getGaugeColour(fre)
+  const colour = getGaugeColour(fre, targetRange)
   const width = Math.min(Math.max(fre, 0), 100)
 
   return (
@@ -32,18 +39,24 @@ export default function ReadabilityGauge({ readability }) {
       </div>
       <div className="gauge-labels">
         <span className="gauge-score">{fre.toFixed(1)}</span>
-        <span className="gauge-desc">
-          {colour === 'green' ? `Target range (${TARGET_RANGE.min}-${TARGET_RANGE.max})` : `Grade ${readability.flesch_kincaid_grade.toFixed(1)} \u2013 ${getGradeLabel(readability.flesch_kincaid_grade)}`}
-        </span>
+        <span className="gauge-desc">{getFreLabel(fre)}</span>
       </div>
-      <div className="readability-metrics">
-        <span className="metric">
-          <strong>{readability.flesch_kincaid_grade.toFixed(1)}</strong> Grade Level
-        </span>
-        <span className="metric">
-          <strong>{readability.gunning_fog.toFixed(1)}</strong> Gunning Fog
-        </span>
+
+      {colour === 'green' ? (
+        <div className="gauge-target-hit">In target range ({targetRange.min}&ndash;{targetRange.max})</div>
+      ) : (
+        <div className="gauge-target-miss">Target: {targetRange.min}&ndash;{targetRange.max}</div>
+      )}
+
+      <div className="gauge-scale">
+        {SCALE_BANDS.map((band) => (
+          <div key={band.label} className="gauge-scale-band" style={{ width: band.width }}>
+            <div className="gauge-scale-bar" style={{ background: band.colour }} />
+            <span className="gauge-scale-label">{band.desc}</span>
+          </div>
+        ))}
       </div>
+
     </div>
   )
 }
