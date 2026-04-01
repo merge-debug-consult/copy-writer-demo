@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ToneModifiers from '../components/ToneModifiers.jsx'
-import ReadabilityGauge from '../components/ReadabilityGauge.jsx'
-import QualitativeScores from '../components/QualitativeScores.jsx'
+import CompactReadability from '../components/CompactReadability.jsx'
+import CompactScores from '../components/CompactScores.jsx'
 import VoiceOutputCard from '../components/VoiceOutputCard.jsx'
 import ErrorModal from '../components/ErrorModal.jsx'
 import { PRESETS } from '../data/presets.js'
@@ -109,6 +109,7 @@ export default function CopyTransformer() {
           className={`source-tab ${showCustom ? 'active' : ''}`}
           onClick={handleCustomClick}
         >
+          <span className="source-tab-icon">{'\u270F\uFE0F'}</span>
           Custom Text
         </button>
       </div>
@@ -142,9 +143,9 @@ export default function CopyTransformer() {
           <h2>How it works</h2>
           <ul>
             <li>Select a property above to instantly see the same text rewritten in <strong>4 brand voices</strong></li>
-            <li>Each voice has its own tone, audience, and style &mdash; from editorial luxury to philosophical competitor</li>
-            <li>Switch between <strong>Website, Instagram, Brochure</strong> and <strong>TE Briefing</strong> channels in each card</li>
-            <li>Use <strong>Custom Text</strong> to paste any supplier copy and generate all 4 voices live</li>
+            <li>Each voice adapts tone, audience, and detail style &mdash; compare Scott Dunn editorial vs competitor copy at a glance</li>
+            <li>Every card includes <strong>multi-channel variants</strong> &mdash; website, social, print, and internal briefing from one input</li>
+            <li>Use <strong>Custom Text</strong> to paste or type any supplier copy and generate all 4 voices live</li>
           </ul>
         </div>
       )}
@@ -173,10 +174,10 @@ export default function CopyTransformer() {
             <div className="input-details-body">
               <p className="panel-text">{inputText}</p>
               {inputReadability && (
-                <ReadabilityGauge readability={inputReadability} targetRange={{ min: 50, max: 65 }} />
+                <CompactReadability readability={inputReadability} targetRange={{ min: 50, max: 65 }} />
               )}
               {inputQualitative && (
-                <QualitativeScores qualitative={inputQualitative} />
+                <CompactScores qualitative={inputQualitative} />
               )}
             </div>
           </details>

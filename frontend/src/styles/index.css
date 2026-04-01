@@ -257,28 +257,32 @@ body {
 }
 
 .input-summary {
-  padding: 0.6rem 1rem;
-  font-size: 0.75rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--sd-text-light);
-  background: #f0f0ec;
+  letter-spacing: 0.03em;
+  color: var(--sd-white);
+  background: var(--sd-green);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   list-style: none;
+  transition: background 0.2s;
+}
+
+.input-summary:hover {
+  background: #005a40;
 }
 
 .input-summary::-webkit-details-marker { display: none; }
-.input-summary::before { content: '\u25B6'; font-size: 0.6rem; transition: transform 0.2s; }
+.input-summary::before { content: '\u25B6'; font-size: 0.55rem; transition: transform 0.2s; }
 details[open] .input-summary::before { transform: rotate(90deg); }
 
 .input-fre {
   font-weight: 400;
   font-size: 0.7rem;
-  color: var(--sd-text-light);
+  color: var(--sd-green-light);
   margin-left: auto;
 }
 
