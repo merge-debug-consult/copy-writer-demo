@@ -184,74 +184,104 @@ BRAND_PRESETS: dict[str, dict] = {
 
 SEASON_FRAGMENTS: dict[str, str] = {
     "winter": (
-        "Frame with a winter atmosphere: crisp air, snow, fireside warmth, hot drinks, "
-        "cosy interiors, early sunsets, and that particular stillness only cold brings."
+        "SEASON IS WINTER. This is critical to the copy. The entire piece MUST read as a winter "
+        "experience. Use winter imagery throughout: crisp mountain air, snow underfoot, fireside "
+        "warmth, steaming hot chocolate, frost on windows, cosy wool blankets, early sunsets "
+        "that drive you indoors, the crunch of fresh snow. If the property has a fireplace, spa, "
+        "or warm interior, lead with that. The reader should feel the cold outside and the warmth within."
     ),
     "summer": (
-        "Frame with a summer atmosphere: long golden days, warm evenings, outdoor dining, "
-        "sun on skin, barefoot mornings, the unhurried pace of endless daylight."
+        "SEASON IS SUMMER. This is critical to the copy. The entire piece MUST read as a summer "
+        "experience. Use summer imagery throughout: blazing sunshine, long golden evenings, "
+        "bare feet on warm stone, cold drinks condensing in the heat, open-air dining under stars, "
+        "swimming before breakfast, linen shirts, the smell of sunscreen and salt. The reader "
+        "should feel the warmth on their skin and the unhurried stretch of endless daylight."
     ),
     "spring": (
-        "Frame with a spring atmosphere: fresh starts, blossom, clear light, green shoots, "
-        "the sense of a world waking up. Lighter than winter, gentler than summer."
+        "SEASON IS SPRING. This is critical to the copy. The entire piece MUST read as a spring "
+        "experience. Use spring imagery throughout: cherry blossom, fresh morning light, green "
+        "shoots everywhere, birdsong at dawn, wildflower meadows, light rain that clears to blue, "
+        "the first outdoor lunch of the year. Everything feels new, bright, and full of possibility."
     ),
     "autumn": (
-        "Frame with an autumn atmosphere: golden light, turning leaves, harvest tables, "
-        "wood smoke, misty mornings, and the quiet contentment of slowing down."
+        "SEASON IS AUTUMN. This is critical to the copy. The entire piece MUST read as an autumn "
+        "experience. Use autumn imagery throughout: golden light slanting through trees, turning "
+        "leaves in copper and amber, wood smoke drifting, harvest tables laden with seasonal produce, "
+        "misty mornings that burn off by noon, the crunch of leaves underfoot, mulled wine, "
+        "candlelit dinners. The reader should feel that rich, contented slowness of the season."
     ),
 }
 
 AFFLUENCE_FRAGMENTS: dict[str, str] = {
     "budget_friendly": (
-        "Position as smart-value travel. Emphasise great experiences without the premium "
-        "price tag. Words like 'accessible', 'great value', 'clever choice'. "
-        "Avoid anything that sounds cheap - this is savvy, not budget."
+        "PRICE POSITION: BUDGET-FRIENDLY. This MUST come through clearly in the copy. "
+        "Do NOT use luxury language. Instead emphasise clever value, hidden gems, local "
+        "authenticity over polish. Words to use: 'great find', 'surprisingly good', 'smart choice', "
+        "'authentic', 'real', 'no-frills charm'. Highlight what you get for the money. "
+        "The reader is savvy, not cheap - they want a brilliant trip without overpaying."
     ),
     "mid_range": (
-        "Position as quality without excess. Comfortable luxury, well-chosen rather than "
-        "extravagant. Emphasise good taste over big spending. The reader wants to treat "
-        "themselves without feeling wasteful."
+        "PRICE POSITION: MID-RANGE COMFORT. This MUST come through in the copy. "
+        "Balance quality with value. Not extravagant, not basic - thoughtfully chosen. "
+        "Words to use: 'well-appointed', 'comfortable', 'good taste', 'considered', "
+        "'treats without excess'. The reader wants to feel they've chosen well without "
+        "feeling guilty about the spend."
     ),
     "premium": (
-        "Position as premium luxury. Emphasise quality, exclusivity, and attention to detail. "
-        "The reader expects the best and is willing to pay for it. Everything should feel "
-        "considered, curated, and worth every penny."
+        "PRICE POSITION: PREMIUM. This MUST come through in the copy. "
+        "Everything should feel high-end, curated, worth the investment. "
+        "Words to use: 'exceptional', 'impeccable', 'curated', 'refined', 'investment in yourself'. "
+        "The reader expects the best and doesn't flinch at the price - they flinch at mediocrity."
     ),
     "lavish": (
-        "Position as ultra-lavish, no-expense-spared luxury. Private jets, butler service, "
-        "the presidential suite, money-is-no-object experiences. Emphasise the extraordinary, "
-        "the one-of-a-kind, the 'you can't buy this anywhere else'."
+        "PRICE POSITION: ULTRA-LAVISH. This MUST dominate the copy. "
+        "No-expense-spared, money-is-no-object, the absolute pinnacle. "
+        "Words to use: 'private', 'bespoke', 'one-of-a-kind', 'your own', 'limitless'. "
+        "Reference private chefs, dedicated butlers, chartered transfers, suites not rooms. "
+        "The reader has unlimited budget - the only question is whether this is extraordinary enough."
     ),
 }
 
 TRAVELLER_FRAGMENTS: dict[str, str] = {
     "couple": (
-        "Writing for a couple travelling together. Emphasise shared moments, togetherness, "
-        "things to discover as a pair, and the intimacy of exploring somewhere new together."
+        "TRAVELLER: COUPLE. The copy MUST be written specifically for a couple. "
+        "Use 'you both', 'together', 'the two of you'. Emphasise shared discoveries, "
+        "intimate dining, side-by-side experiences, quiet mornings together, the joy of "
+        "exploring somewhere new as a pair. Every scene should have two people in it."
     ),
     "honeymoon": (
-        "Writing for honeymooners. Frame as the first chapter of a new story - celebration, "
-        "romance, once-in-a-lifetime indulgence, and creating memories they'll talk about forever."
+        "TRAVELLER: HONEYMOONERS. The copy MUST be written as a honeymoon. "
+        "This is the most important trip of their lives so far. Use language of celebration, "
+        "romance, and firsts: 'your first morning as newlyweds', 'champagne at sunset', "
+        "'a trip you'll tell the story of forever'. Emphasise privacy, indulgence, romance, "
+        "and the sense that this trip marks the beginning of everything."
     ),
     "family_young": (
-        "Writing for families with young children (under 8). Address parents directly. "
-        "Emphasise safety, convenience, kids' facilities, easy logistics, and guilt-free "
-        "parent time. The kids being happy is what makes it a holiday."
+        "TRAVELLER: FAMILY WITH YOUNG CHILDREN. The copy MUST speak directly to parents. "
+        "Address their real concerns: 'while the little ones are settled with the kids club', "
+        "'flexible enough for nap schedules', 'the kind of holiday where everyone sleeps well'. "
+        "Emphasise childcare, safety, easy logistics, family-friendly dining, and the guilt-free "
+        "freedom of knowing the children are happy and looked after."
     ),
     "family_teens": (
-        "Writing for families with teenagers. Emphasise activities that genuinely engage "
-        "teens (not childish, not boring), shared experiences the whole family can bond over, "
-        "and enough independence that nobody feels dragged along."
+        "TRAVELLER: FAMILY WITH TEENAGERS. The copy MUST acknowledge the teen dynamic. "
+        "Emphasise activities that genuinely excite teens (not patronise them): water sports, "
+        "adventure, late-night pizza, their own space. Address parents too: 'the trip where "
+        "everyone actually wants to do the same thing', 'they'll put the phone down for this'. "
+        "The win is the whole family bonding without anyone feeling dragged along."
     ),
     "friends_group": (
-        "Writing for a group of friends travelling together. Emphasise shared fun, social "
-        "spaces, group activities, late nights, laughter, and the kind of trip that becomes "
-        "the story everyone tells for years."
+        "TRAVELLER: GROUP OF FRIENDS. The copy MUST be written for a group trip. "
+        "Use 'the group', 'your crew', 'everyone'. Emphasise shared villas, group dining, "
+        "late nights, shared adventures, inside jokes in the making. The tone should feel "
+        "like planning the trip everyone's been talking about for months."
     ),
     "solo": (
-        "Writing for a solo traveller. Emphasise freedom, self-discovery, meeting people, "
-        "doing things at your own pace, and the particular confidence of travelling alone. "
-        "Never frame solo travel as lonely - frame it as liberating."
+        "TRAVELLER: SOLO TRAVELLER. The copy MUST be written for someone travelling alone. "
+        "Use 'you' singularly. Emphasise freedom, self-discovery, going at your own pace, "
+        "the confidence of a table for one, meeting locals, and the particular clarity that "
+        "comes from being somewhere new with nobody else's agenda. "
+        "NEVER frame solo travel as lonely - it is liberating, intentional, and brave."
     ),
 }
 
@@ -290,7 +320,10 @@ def compose_system_prompt(
     )
 
     if modifier_text:
-        prompt += f"\n\nADDITIONAL CONTEXT:\n{modifier_text}"
+        prompt += (
+            "\n\nCRITICAL REQUIREMENTS - these MUST shape the entire output, not just a sentence or two:\n"
+            f"{modifier_text}"
+        )
 
     prompt += (
         "\n\nTransform the supplier text into approximately 150-200 words of polished copy. "
