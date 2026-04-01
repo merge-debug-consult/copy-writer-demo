@@ -5,7 +5,7 @@ const CHANNELS = [
   { key: 'te_briefing', label: 'TE Briefing' },
 ]
 
-export default function ChannelTabs({ channels, activeChannel, onChannelChange }) {
+export default function ChannelTabs({ channels, activeChannel, onChannelChange, accentColour }) {
   if (!channels) return null
 
   return (
@@ -16,6 +16,7 @@ export default function ChannelTabs({ channels, activeChannel, onChannelChange }
             key={ch.key}
             className={`channel-tab ${activeChannel === ch.key ? 'active' : ''}`}
             onClick={() => onChannelChange(ch.key)}
+            style={activeChannel === ch.key && accentColour ? { borderBottomColor: accentColour, color: accentColour } : undefined}
           >
             {ch.label}
           </button>

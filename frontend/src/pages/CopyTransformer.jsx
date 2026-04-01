@@ -15,6 +15,7 @@ const VOICE_KEYS = BRAND_PRESETS.map((bp) => ({
   colour: bp.colour,
   style: bp.style,
   targetRange: bp.targetRange,
+  targetRationale: bp.targetRationale,
   description: bp.description,
 }))
 
@@ -164,12 +165,14 @@ export default function CopyTransformer() {
           {/* Supplier original - collapsed */}
           <details className="input-details">
             <summary className="input-summary">
-              Supplier Original &mdash; click to see input text
+              <span className="input-summary-icon">{'\u2139\uFE0F'}</span>
+              Supplier Original
               {inputReadability && (
                 <span className="input-fre">
                   Readability: {inputReadability.flesch_reading_ease.toFixed(0)}
                 </span>
               )}
+              <span className="input-chevron">{'\u25BE'}</span>
             </summary>
             <div className="input-details-body">
               <p className="panel-text">{inputText}</p>
@@ -195,6 +198,7 @@ export default function CopyTransformer() {
                   description={voice.description}
                   response={voiceResponse}
                   targetRange={voice.targetRange}
+                  targetRationale={voice.targetRationale}
                 />
               )
             })}

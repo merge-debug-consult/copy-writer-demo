@@ -54,6 +54,7 @@ export const BRAND_PRESETS = [
     },
     description: 'Luxury tailor-made holidays. Aspirational, sensory, expert-led.',
     targetRange: { min: 50, max: 65 },
+    targetRationale: 'Sophisticated but accessible luxury editorial',
   },
   {
     key: 'sd_private',
@@ -67,6 +68,7 @@ export const BRAND_PRESETS = [
     },
     description: 'Invitation-only ultra-luxury. Understated, discreet, access-driven.',
     targetRange: { min: 40, max: 55 },
+    targetRationale: 'Denser, more refined prose for discerning readers',
   },
   {
     key: 'explorers',
@@ -80,6 +82,7 @@ export const BRAND_PRESETS = [
     },
     description: 'Family kids clubs. Joyful, reassuring, guilt-free.',
     targetRange: { min: 60, max: 75 },
+    targetRationale: 'Light and scannable for time-poor parents',
   },
   {
     key: 'black_tomato',
@@ -93,6 +96,7 @@ export const BRAND_PRESETS = [
     },
     description: 'Feeling over destination. Philosophical, punchy, "rare and remarkable."',
     targetRange: { min: 55, max: 70 },
+    targetRationale: 'Punchy and accessible, emotion over complexity',
   },
 ]
 

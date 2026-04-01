@@ -276,14 +276,25 @@ body {
 }
 
 .input-summary::-webkit-details-marker { display: none; }
-.input-summary::before { content: '\u25B6'; font-size: 0.55rem; transition: transform 0.2s; }
-details[open] .input-summary::before { transform: rotate(90deg); }
+
+.input-summary-icon {
+  font-size: 0.85rem;
+}
 
 .input-fre {
   font-weight: 400;
   font-size: 0.7rem;
   color: var(--sd-green-light);
+}
+
+.input-chevron {
   margin-left: auto;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+details[open] .input-chevron {
+  transform: rotate(180deg);
 }
 
 .input-details-body {
@@ -438,6 +449,9 @@ details[open] .input-summary::before { transform: rotate(90deg); }
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   margin-bottom: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #ddd;
+  margin-top: 0.25rem;
 }
 
 .voice-card {
@@ -445,6 +459,7 @@ details[open] .input-summary::before { transform: rotate(90deg); }
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1.5px solid;
 }
 
 .voice-card-header {
@@ -485,6 +500,13 @@ details[open] .input-summary::before { transform: rotate(90deg); }
   line-height: 1.65;
   max-height: 200px;
   overflow-y: auto;
+}
+
+.voice-card-target-rationale {
+  font-size: 0.62rem;
+  color: var(--sd-text-light);
+  font-style: italic;
+  margin-top: 0.15rem;
 }
 
 /* Compact readability (for voice cards) */
